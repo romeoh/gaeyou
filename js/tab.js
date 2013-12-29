@@ -18,11 +18,11 @@ var  code = 'tab'
 window.addEventListener('DOMContentLoaded', ready, false);
 function ready() {
 	
-	/*if (!admin) {
+	if (!admin) {
 		alert('서비스 점검중입니다.');
 		window.location.href = '/t/';
 		return false;
-	}*/
+	}
 	
 	// storage 초기화
 	initSchool();
