@@ -1,0 +1,144 @@
+@charset "utf-8";
+
+/* 탭메뉴 */
+.sc_tb {position: relative;overflow: hidden;padding: 3px 8px 4px;border-top: 1px solid #e4e3e3}
+.sc_tb a.on {border: 1px solid #808292;color: #191e3c;background: #dee1e8;box-shadow: inset 2px 2px 6px #97a0b3;}
+.sc_tb a {display: block;float: left;width: 50%;height: 32px;border: 1px solid #949cac;border-right: 0;border-radius: 4px 0 0 4px;-webkit-box-sizing: border-box;box-sizing: border-box;text-align: center;color: #424652;letter-spacing: -1px;font-weight: bold;font-size: 14px;text-shadow: 0 1px rgba(255,255,255,0.05);line-height: 2.28em;background: -webkit-gradient(linear,0 0,0 100%,from(#fefefe),to(#e9ebed));}
+.sc_tb a.on + a {border-left: 0;}
+.sc_tb a + a {border-radius: 0 4px 4px 0;border-right: 1px solid #949cac;}
+
+
+/* 컨텐츠box */
+.container_box {position:relative; margin: 5px 5px 15px; border: 1px solid #979ba5; border-radius: 5px; box-shadow: 0 0 1px rgba(0,0,0,.3);}
+.container_box .tit_area {position: relative;padding-left: 15px;border-bottom: 1px solid #979ba5;border-top-left-radius: 5px;border-top-right-radius: 5px;line-height: 35px;box-shadow: inset 1px 1px 0 #f5f6f7,inset -1px 0 0 #f5f6f7;}
+.container_box .tit_area h2 {font-size: 15px;color: #29282c;letter-spacing: -1px;text-shadow: 0 1px 0 rgba(255,255,255,.55);text-align:left;}
+.container_box .tit_area h2 .vs {color:blue;}
+.container_box .tit_area h2 input {border:1px solid #D1D2CA; height:20px; width:250px;padding-left:5px}
+.container_box .author {position:absolute; top:40px; right:10px;font-size: 14px;color: #ACAC9C;}
+.container_box .author a {color: #ACAC9C;}
+.container_box .friendAuthor {position:absolute; top:0px; right:10px;font-size: 14px;color: #ACAC9C; display:none}
+.container_box .friendAuthor a {color: #ACAC9C;}
+.container_box .tit_area .viewResult {position:absolute; top:0; right:10px;cursor: pointer;}
+.container_box .tit_area .viewResult em {display: ;overflow: hidden;position: absolute;right: 43px;bottom: 6px;width: 20px;height: 20px;background: url(../images/img/sp_btn.png) no-repeat -44px 6px;background-size: 250px 250px;line-height: 999px;vertical-align: top;-webkit-background-size: 250px 250px;}
+.container_box.open .tit_area .viewResult em {background-position:-28px 6px}
+
+.content_area {padding: 25px 10px 13px;background: #fff;border-bottom: 1px solid #aaa;}
+.content_area .contents {text-align:center; padding:20px}
+.content_area .contents .exp {padding:10px 0; font-weight:bold; font-size:26px}
+.content_area .contents .total {padding:0px 0 10px 0;}
+.content_area .add_test dd {padding-bottom:20px}
+.container_box .add_test .ex {font-size:13px; color:#aaa; padding-left:18px}
+.container_box .share_area {padding: 10px 0 1px 0;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;background: #fff;}
+.inbox {border:none; margin-bottom:10px; padding:0 10px}
+.inputName {height: 35px;font-size: 14px;border: 1px solid #e7e7e7;padding-left: 5px;}
+
+.content_area .make_test {text-align:center}
+.content_area .make_test a {color:#356EFF; text-decoration:underline}
+
+/* 댓글 */
+.reply_box {position: relative;overflow: hidden;margin: 5px 5px 0;border: 1px solid #979ba5;border-radius: 5px;box-shadow: 0 0 1px rgba(0,0,0,.3);}
+.reply_box .tit_area {position: relative;padding-left: 15px;border-bottom: 1px solid #979ba5;border-top-left-radius: 5px;border-top-right-radius: 5px;line-height: 35px;box-shadow: inset 1px 1px 0 #f5f6f7,inset -1px 0 0 #f5f6f7;}
+.reply_box .tit_area h2 {font-size: 15px;color: #29282c;letter-spacing: -1px;text-shadow: 0 1px 0 rgba(255,255,255,.55);text-align:left;}
+
+/* 댓글쓰기 */
+.replyBox {position:fixed; bottom:0; width:100%; border:1px solid #000; background:#fff; z-index:999}
+.replyBox .kasid {padding:5px 4px 5px 0; margin:0px 80px 0 10px}
+.replyBox .kasid input {width:100%; border: 1px solid #D1D2CA; display:none}
+.replyBox .recon {border: 1px solid #D1D2CA; padding: 10px 15px;margin:0px 80px 10px 10px}
+.replyBox .recon .con {min-height: 18px; max-height: 54px;white-space: nowrap;overflow: hidden;outline: none;line-height: 18px;}
+.replyBox .recon .con.msg {color:rgb(247, 154, 239)}
+.replyBox .btnbox {position:absolute; bottom:15px; right:10px}
+.replyBox .btnbox .btn_submit {display: inline-block;width: 60px;height: 31px;border: 1px solid #909296;border-radius: 3px;background: -webkit-gradient(linear,0 0,0 100%,from(#fff),color-stop(.05,#fbfbfb),to(#f1f1f1));line-height: 31px;font-weight: 600;text-align: center;color: #333;}
+.replyBox .btnbox .btn_submit span:after {display: inline-block;overflow: hidden;width: 5px;height: 9px;vertical-align: top;content: '';-webkit-background-size: 250px 250px;}
+
+
+/* 댓글컨텐츠 */
+.replyContainer {margin-top:0px}
+.reply_area {padding: 5px 0px 13px;background: #fff;border-bottom: 1px solid; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;background: #fff}
+.reply_area .list_con {display:;}
+.reply_area li {padding: 10px 20px 10px 16px;border-top: 1px solid #dddddf; list-style:none;position:relative}
+.reply_area li:first-child {border-top: none;}
+.reply_area li a {display: block;}
+.reply_area li a .thum {float:left;}
+.reply_area li a dl {padding-left:75px; display: block;-webkit-margin-before: 10px;-webkit-margin-after: 10px;-webkit-margin-start: 0px;-webkit-margin-end: 0px;}
+.reply_area li a dt {margin-bottom: 3px;font-size: 16px;font-weight: bold;color: #43646b;letter-spacing: -1px;}
+.reply_area li a dd {position: relative;padding-left: 35px;font-size: 14px;line-height: 20px;color: #29282c;}
+.reply_area li a dd span {position: absolute;left: 0;color: #999;}
+.reply_area li a dd strong {display: inline-block;overflow: hidden;max-width: 100%;letter-spacing: 0px;text-overflow: ellipsis;}
+.reply_area li .profile {position:absolute;}
+.reply_area li .profile .photo {float:left}
+.reply_area li .profile .photo img {width:36px; height:36px; border-radius:5px}
+.reply_area li .profile .user {float:left; margin-left:10px}
+.reply_area li .profile .user .uname {color: #588CB3;font-style: normal;}
+.reply_area li .profile .user .date {font-size: 12px;color: #ACAC9C;margin-left:5px}
+.reply_area li .desc {padding:20px 0 0 46px}
+.reply_area li .kas {position:absolute; top:10px; right:10px;font-size: 14px;color: #ACAC9C;}
+.reply_area li .kas a {color: #ACAC9C;}
+.reply_area li .noReply {color:rgb(206, 112, 112)}
+.reply_area .more {text-align:center; padding:5px}
+
+/* 리스트 */
+.list_box {position: relative;overflow: hidden;margin: 5px 5px 0;border: 1px solid #979ba5;border-radius: 5px;box-shadow: 0 0 1px rgba(0,0,0,.3);}
+.list_box .tit_area {position: relative;padding-left: 15px;border-bottom: 1px solid #979ba5;border-top-left-radius: 5px;border-top-right-radius: 5px;line-height: 35px;box-shadow: inset 1px 1px 0 #f5f6f7,inset -1px 0 0 #f5f6f7;}
+.list_box .tit_area .order {position:absolute; top:0px; right:9px; font-size:12px; color:#999}
+.list_box .tit_area h2 {font-size: 15px;color: #29282c;letter-spacing: -1px;text-shadow: 0 1px 0 rgba(255,255,255,.55);text-align:left;}
+.list_box .tit_area h2 span {font-weight:normal; color:#666}
+
+.list_box .event_area {padding: 15px 10px 13px;background: #fff;border-bottom: 1px solid #aaa;background: #fff;}
+.list_box .list_area {position:relative; padding:0px 0px 13px;background: #fff;border-bottom: 1px solid; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;background: #fff}
+.list_box .list_area .sprit_li {position: relative;overflow: hidden;border-bottom: 1px solid #eaeaea;}
+.list_box .list_area .sprit_li.sel {background:#E5E4E9}
+.list_box .list_area .sprit_li a {display: block;overflow: hidden;padding: 16px 10px 15px 10px;background: url(../images/common/bu_arr7.gif) no-repeat 100% 28px;background-size: 23px 12px;-webkit-background-size: 23px 12px;}
+.list_box .list_area .sprit_li .txt_bx {display: block;margin-right: 23px;}
+.list_box .list_area .sprit_li .tit {display: block;overflow: hidden;font-size: 17px;color: #000;white-space: nowrap;text-overflow: ellipsis;}
+.list_box .list_area .sprit_li .dsc {display: block;overflow: hidden;margin-top: 3px;font-size: 13px;color: #999;white-space: nowrap;text-overflow: ellipsis;}
+.list_box .list_area .sprit_li .good {position:absolute; top:22px; right:28px; font-size:13px; color:#9E9C9C}
+.list_box .list_area .sprit_li .good .ico_good {background:url(../images/common/sp_btn.png) no-repeat; background-size:250px 250px; background-position:-22px -68px; width:16px; height:16px; display:inline-block; vertical-align:middle}
+.list_box .list_area .more {text-align:center; padding:5px}
+
+.list_box .hot_area {border-bottom-left-radius:0; border-bottom-right-radius:0;}
+
+/* 만들기 */
+.container_box .opt {display: inline-block; background: url(../images/common/ico_ent.png) no-repeat -49px -91px; width:18px; height:10px}
+.container_box .opt2 {display: inline-block; width:18px; height:10px}
+.container_box .inp_list {margin:5px 20px 5px 20px}
+.container_box .inp_list.btnbox {text-align:center; padding:0}
+.container_box .inp_list input {border:1px solid #D1D2CA; padding:5px; width:100%; font-size:14px}
+.container_box .inp_list textarea {width:100%; height:100px; font-size:16px}
+.container_box [data-list="2"],
+.container_box [data-list="3"],
+.container_box [data-list="4"],
+.container_box [data-list="5"] {display:none}
+.container_box dt {position:relative}
+.container_box dt .leng {position:absolute; top:0px; right:15px}
+.container_box .btn_poll {overflow: hidden;margin: 8px 3px;border-radius: 3px;background-color: #bdb7b7;background-image: -webkit-gradient(linear,left top,left bottom,from(#ccc5c5),to(#b1acac));background-image: -moz-linear-gradient(top,#ccc5c5,#b1acac);background-image: -o-linear-gradient(top,#ccc5c5,#b1acac);background-image: linear-gradient(to bottom,#ccc5c5,#b1acac);box-shadow: 0 1px 1px rgba(0,0,0,0.1);-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1); cursor:pointer;}
+.container_box .pround {display: inline-block;padding: 1px;border-radius: 3px;font-size: 12px;text-decoration: none;}
+.container_box .btn_poll .inner_poll {overflow: hidden;border-radius: 3px;padding: 4px 15px 2px;font-size: 1.2em;color: #444;letter-spacing: -1px;background-color: #f9f9f9;background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#f4f4f4));background-image: -moz-linear-gradient(top,#fff,#f4f4f4);background-image: -o-linear-gradient(top,#fff,#f4f4f4);background-image: linear-gradient(to bottom,#fff,#f4f4f4);}
+
+
+/* 테스트버튼 */
+.btn_test {margin: 5px -49px 10px 0;padding: 8px 0 9px;border: 1px solid #909090;border-radius: 4px;background: #f2f2f2;text-align: center; width:100%}
+.btn_test .btnTest {display: inline-block;padding: 1px;border-radius: 3px;font-size: 12px;text-decoration: none;overflow: hidden;margin: 8px 3px;border-radius: 3px;background-color: #bdb7b7;background-image: -webkit-gradient(linear,left top,left bottom,from(#ccc5c5),to(#b1acac));background-image: -moz-linear-gradient(top,#ccc5c5,#b1acac);background-image: -o-linear-gradient(top,#ccc5c5,#b1acac);background-image: linear-gradient(to bottom,#ccc5c5,#b1acac);box-shadow: 0 1px 1px rgba(0,0,0,0.1);-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);cursor: pointer;}
+.btn_test .btnTest .inner {overflow: hidden;border-radius: 3px;padding: 4px 15px 2px;font-size: 1.2em;color: #444;letter-spacing: -1px;background-color: #f9f9f9;background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#f4f4f4));background-image: -moz-linear-gradient(top,#fff,#f4f4f4);background-image: -o-linear-gradient(top,#fff,#f4f4f4);background-image: linear-gradient(to bottom,#fff,#f4f4f4);}
+
+
+/**/
+.list_button {}
+.list_button .listBtn {display: inline-block;padding: 1px;border-radius: 3px;font-size: 12px;text-decoration: none;overflow: hidden;margin: 8px 0px;border-radius: 3px;background-color: #bdb7b7;background-image: -webkit-gradient(linear,left top,left bottom,from(#ccc5c5),to(#b1acac));background-image: -moz-linear-gradient(top,#ccc5c5,#b1acac);background-image: -o-linear-gradient(top,#ccc5c5,#b1acac);background-image: linear-gradient(to bottom,#ccc5c5,#b1acac);box-shadow: 0 1px 1px rgba(0,0,0,0.1);-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);cursor: pointer;}
+.list_button .listBtn .inner {overflow: hidden;border-radius: 3px;padding: 2px 1px 2px;font-size: 1.2em;color: #444;letter-spacing: -1px;background-color: #f9f9f9;background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#f4f4f4));background-image: -moz-linear-gradient(top,#fff,#f4f4f4);background-image: -o-linear-gradient(top,#fff,#f4f4f4);background-image: linear-gradient(to bottom,#fff,#f4f4f4);}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
