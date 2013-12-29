@@ -3,13 +3,13 @@
 .gnbMacao, 
 .gnbNew, 
 .gnbMain,
-.gnbMenu {background:url(../images/common/ico.png); background-size:200px 150px}
+.gnbMenu {background:url(http://romeoh.github.io/gaeyou/images/common/ico.png); background-size:200px 150px}
 
 body, p, h1, h2, h3, h4, h5, ul, li, dl, dt, dd, header {margin:0; padding:0; font-family: '나눔고딕',NanumGothic,'맑은 고딕','Malgun Gothic','돋움',Dotum,'굴림',Gulim,Helvetica,sans-serif;}
 body {background:#eceef0; margin:0}
 a {text-decoration:none; cursor:pointer;}
 li {list-style:none;}
-header {background:url(../images/common/bg_header.png); background-size:18px 44px; height:44px; position:relative;}
+header {background:url(http://romeoh.github.io/gaeyou/images/common/bg_header.png); background-size:18px 44px; height:44px; position:relative;}
 header .gnbMain {background-position:0px 0px; display:none; position:absolute; top:5px; left:5px; width:70px; height:32px;}
 header .gnbMacao {background-position:129px 0px; display:block; position:absolute; top:5px; right:5px; width:107px; height:32px; display:none}
 header .gnbNew {background-position:85px -107px; display:block; position:absolute; top:5px; right:5px; width:33px; height:33px}
@@ -28,7 +28,7 @@ nav .nav li.on a {color: #fffc00;text-shadow: 0 -1px 0 rgba(0,0,0,.3);}
 nav .nav li a {display: block;font-weight: 600;font-size: 14px;color: #245465;text-shadow: 0 1px 0 rgba(255,255,255,.3);}
 nav .notice {padding:5px; background:#f4f4f4; border-bottom:1px solid #979ba6}
 nav .notice a {color:#28272c;}
-nav .new {display: inline-block;overflow: hidden;background-image: url(../images/common/ims.png);background-repeat: no-repeat;color: transparent;white-space: nowrap;text-indent: 100%;width: 14px;height: 14px;background-position: -40px -30px; margin-left:3px}
+nav .new {display: inline-block;overflow: hidden;background-image: url(http://romeoh.github.io/gaeyou/images/common/ims.png);background-repeat: no-repeat;color: transparent;white-space: nowrap;text-indent: 100%;width: 14px;height: 14px;background-position: -40px -30px; margin-left:3px}
 
 .wrap {position: relative;z-index: 10;margin-bottom: -1px;border-top: 1px solid #ced1d7;border-bottom: 1px solid #979ba5;background: #dcdfe3; padding:20px 0}
 .wrap h2 {color:#333; font-size:22px}
@@ -46,18 +46,18 @@ nav .new {display: inline-block;overflow: hidden;background-image: url(../images
 .share li:first-child a {position: relative;z-index: 3;border-top-right-radius: 0;border-bottom-right-radius: 0;border-right: 1px solid #909296}
 .share li:nth-child(2) a {position: relative;z-index: 3;border-radius: 0;border-right: 1px solid #909296}
 .share li:last-child a {position: static;border-left: 0;border-top-left-radius: 0;border-bottom-left-radius: 0;border-top-right-radius: 3px !important;border-bottom-right-radius: 3px !important;border-right: 1px solid #909296 !important;}
-.share li a em {display: inline-block;overflow: hidden;width: 14px;height: 14px;background: url(../images/common/sp_btn.png) no-repeat;background-size: 250px 250px;vertical-align: middle;-webkit-background-size: 250px 250px;}
+.share li a em {display: inline-block;overflow: hidden;width: 14px;height: 14px;background: url(http://romeoh.github.io/gaeyou/images/common/sp_btn.png) no-repeat;background-size: 250px 250px;vertical-align: middle;-webkit-background-size: 250px 250px;}
 .share li a em.ico_star_check {height: 15px;margin: -4px 5px 0 0;background-position: -82px -19px;}
 .share li a em.ico_gaeup {height: 15px;margin: -4px 5px 0 0;background-position: -22px -69px;}
 .share li a em.ico_check {height: 15px;margin: -4px 5px 0 0;background-position: -13px 3px;}
 
 .btn_w {margin:13px 0 19px; text-align:center; display:}
 .btn_go {display: inline-block;width: 83px;height: 31px;border: 1px solid #909296;border-radius: 3px;background: -webkit-gradient(linear,0 0,0 100%,from(#fff),color-stop(.05,#fbfbfb),to(#f1f1f1));line-height: 31px;font-weight: 600;text-align: center;; color:#333}
-.btn_go span:after {display: inline-block;overflow: hidden;width: 5px;height: 9px;margin: 11px 0 0 7px;background: url(../images/common/sp_btn.png) no-repeat -36px -18px;background-size: 250px 250px;vertical-align: top;content: '';-webkit-background-size: 250px 250px;}
+.btn_go span:after {display: inline-block;overflow: hidden;width: 5px;height: 9px;margin: 11px 0 0 7px;background: url(http://romeoh.github.io/gaeyou/images/common/sp_btn.png) no-repeat -36px -18px;background-size: 250px 250px;vertical-align: top;content: '';-webkit-background-size: 250px 250px;}
 
 .appList {position:relative;}
 .appList h2 {border-top: 1px solid #979ba5;border-bottom: 1px solid #979ba5;background: #dcdfe3; padding:5px 10px; color:#333; text-align:left; font-size:18px}
-.btn_rlist {display: inline-block;overflow: hidden;position: absolute;top: 10px;right: 10px;width: 114px;height: 25px;padding-left: 8px;background: url(../images/img/btn_rlist.gif) 0 0 no-repeat;font-weight: bold;line-height: 25px;color: #444;letter-spacing: -1px; font-size:12px}
+.btn_rlist {display: inline-block;overflow: hidden;position: absolute;top: 10px;right: 10px;width: 114px;height: 25px;padding-left: 8px;background: url(http://romeoh.github.io/gaeyou/images/img/btn_rlist.gif) 0 0 no-repeat;font-weight: bold;line-height: 25px;color: #444;letter-spacing: -1px; font-size:12px}
 .btn_rlist.sel {background-position:0 -25px}
 .listbox {position:absolute; border:1px solid #555664; top:34px; right:10px; background:#fff; min-width:120px; display:none}
 .listbox ul {}
@@ -67,7 +67,7 @@ nav .new {display: inline-block;overflow: hidden;background-image: url(../images
 .appList ul {}
 .appList ul li {list-style:none; border-top: 1px solid rgba(255,255,255,0.4); border-bottom: 1px solid #cdcfd2; padding:8px 15px; display:none;}
 .appList ul li a {text-decoration:none; color:#333;}
-.ico {display: inline-block;overflow: hidden;background: url(../images/common/sp_ico.png) no-repeat;background-size: 250px 250px;line-height: 999px;vertical-align: top;-webkit-background-size: 250px 250px;}
+.ico {display: inline-block;overflow: hidden;background: url(http://romeoh.github.io/gaeyou/images/common/sp_ico.png) no-repeat;background-size: 250px 250px;line-height: 999px;vertical-align: top;-webkit-background-size: 250px 250px;}
 .ico.new {width: 25px;height: 15px;margin-top: 2px;background-position: -2px -2px;}
 .ico.hot {width: 25px;height: 15px;margin-top: 2px;background-position: -31px -2px;}
 .ico.command {width: 25px;height: 15px;margin-top: 2px;background-position: -57px -2px;}
@@ -219,12 +219,12 @@ nav .nav li a {display: block;font-weight: 600;font-size: 14px;color: #245465;te
 .gnb .head {background:#1771E4; padding:10px}
 .gnb .welcome {color:#fff}
 .gnb .close {position: absolute;top: 2px;right: 0px;width: 33px;height: 33px; cursor:pointer}
-.gnb .close .imh {background-image: url(../images/common/sp_imh_v5.png);background-repeat: no-repeat;background-size: 270px 250px;-webkit-background-size: 270px 250px;display: inline-block;width: 16px;height: 17px;margin: 8px 0 0 8px;background-position: -104px -1px;}
+.gnb .close .imh {background-image: url(http://romeoh.github.io/gaeyou/images/common/sp_imh_v5.png);background-repeat: no-repeat;background-size: 270px 250px;-webkit-background-size: 270px 250px;display: inline-block;width: 16px;height: 17px;margin: 8px 0 0 8px;background-position: -104px -1px;}
 .gnb .menu {}
 .gnb .menu dt {background:#efefef; border-bottom:1px solid #d7d7d7; padding:10px}
 .gnb .menu dd {background:#fff; border-bottom:1px solid #d7d7d7}
 .gnb .menu dd a {color:#444650; padding:10px 20px; display:block}
-.gnb .menu dd a .ico {background-image: url(../images/common/sp_imh_v5.png);background-repeat: no-repeat;background-size: 270px 250px;display: inline-block;}
+.gnb .menu dd a .ico {background-image: url(http://romeoh.github.io/gaeyou/images/common/sp_imh_v5.png);background-repeat: no-repeat;background-size: 270px 250px;display: inline-block;}
 .gnb .menu dd a .ico.arrow {background-position: -41px -49px;width: 7px;height: 17px; margin-right:5px}
 .gnb .menu dd a .ico.new {background-position: -80px -65px;width: 26px;height: 13px; margin-left:7px}
 .gnb .menu dd a .ico.up {background-position: -80px -78px;width: 26px;height: 17px; margin-left:7px}

@@ -23,7 +23,7 @@
 .event_box .friendAuthor {position:absolute; top:0px; right:10px;font-size: 14px;color: #ACAC9C; display:none}
 .event_box .friendAuthor a {color: #ACAC9C;}
 .event_box .tit_area .viewResult {position:absolute; top:0; right:10px;cursor: pointer;}
-.event_box .tit_area .viewResult em {display: ;overflow: hidden;position: absolute;right: 43px;bottom: 6px;width: 20px;height: 20px;background: url(../images/img/sp_btn.png) no-repeat -44px 6px;background-size: 250px 250px;line-height: 999px;vertical-align: top;-webkit-background-size: 250px 250px;}
+.event_box .tit_area .viewResult em {display: ;overflow: hidden;position: absolute;right: 43px;bottom: 6px;width: 20px;height: 20px;background: url(http://romeoh.github.io/gaeyou/images/img/sp_btn.png) no-repeat -44px 6px;background-size: 250px 250px;line-height: 999px;vertical-align: top;-webkit-background-size: 250px 250px;}
 .event_box.open .tit_area .viewResult em {background-position:-28px 6px}
 
 /* type A */
@@ -36,7 +36,7 @@
 .event_box .tinfo {position:relative; padding: 17px 20px 18px;border: 1px solid #bcbcbc;background: #fafafa;line-height: 18px;text-align: left; margin-top:15px; display:; text-align:center}
 .event_area .category {margin-top:10px}
 .event_box .tinfo.tab {padding: 17px 5px 18px;}
-.event_box .tinfo .ico {display: inline-block;overflow: hidden;background: url(../images/img/sp_ico.png) no-repeat;background-size: 250px 250px;line-height: 999px;vertical-align: top;-webkit-background-size: 250px 250px;}
+.event_box .tinfo .ico {display: inline-block;overflow: hidden;background: url(http://romeoh.github.io/gaeyou/images/img/sp_ico.png) no-repeat;background-size: 250px 250px;line-height: 999px;vertical-align: top;-webkit-background-size: 250px 250px;}
 .event_box .tinfo .ico.i {width: 15px;height: 15px;background-position: -109px 0;}
 .event_box .tinfo a {color:#2ac278; padding:5px}
 .event_box .tinfo .board {}
@@ -93,11 +93,11 @@
 .question {padding:20px}
 .event_box .qst {margin-left:20px; border:1px solid #D1D2CA; padding:5px;}
 .event_box .qst.place {color:#bbb}
-.event_box .opt {display: inline-block; background: url(../images/common/ico_ent.png) no-repeat -49px -91px; width:18px; height:10px}
+.event_box .opt {display: inline-block; background: url(http://romeoh.github.io/gaeyou/images/common/ico_ent.png) no-repeat -49px -91px; width:18px; height:10px}
 .event_box .opt2 {display: inline-block; width:18px; height:10px}
 .event_box .inp_list {margin:5px 20px 5px 20px}
 .event_box .inp_list input {; border:1px solid #D1D2CA; padding:5px; width:250px;}
-.event_box .ico_ent {display: inline-block;overflow: hidden;background: url(../images/common/ico_ent.png) no-repeat;text-indent: -9999px;vertical-align: top;}
+.event_box .ico_ent {display: inline-block;overflow: hidden;background: url(http://romeoh.github.io/gaeyou/images/common/ico_ent.png) no-repeat;text-indent: -9999px;vertical-align: top;}
 .event_box .ico_check {margin-top: 7px;width: 14px;height: 10px;background-position: -30px -90px;}
 .event_box .ico_vs {width: 25px;height: 15px;margin-top: 36px;background-position: -10px -110px;}
 .event_box .notice {font-size:14px; padding-left:16px; color:#1939E4}
@@ -138,7 +138,7 @@ select {float: none;width: 70%;height: 31px;margin-left: 6px;margin-bottom: 15px
 .result_box {border-top:1px solid #979ba5; padding:10px 0;}
 .result_box .container {position: relative; background:#eceef0; padding:10px;overflow: hidden;margin: 5px 5px 0;border: 1px solid #979ba5;border-radius: 5px;box-shadow: 0 0 1px rgba(0,0,0,.3); display:none;}
 .result_box .info_w {position: relative;height: 51px;padding:0 0 10px 57px;}
-.result_box .info_w .ico_prize {overflow: hidden;position: absolute;top: 0;left: 0;width: 51px;height: 51px;background: url(../images/img/sp_pop.png) no-repeat 0 -115px;background-size: 200px 166px;line-height: 999px;-webkit-background-size: 200px 166px;}
+.result_box .info_w .ico_prize {overflow: hidden;position: absolute;top: 0;left: 0;width: 51px;height: 51px;background: url(http://romeoh.github.io/gaeyou/images/img/sp_pop.png) no-repeat 0 -115px;background-size: 200px 166px;line-height: 999px;-webkit-background-size: 200px 166px;}
 .result_box .info_w h3 {overflow: hidden;padding-top: 7px;font-size: 17px;font-weight: bold;color: #29282c;white-space: nowrap;text-overflow: ellipsis;}
 .result_box .info_w .info {display: table;margin-top: 5px;font-size: 13px;}
 .result_box .lucky {position: relative; background:#fff; padding:10px;overflow: hidden;margin: 5px auto 0;border: 1px solid #979ba5;border-radius: 5px;box-shadow: 0 0 1px rgba(0,0,0,.3); width:100px; text-align:center;}
@@ -216,7 +216,7 @@ select {float: none;width: 70%;height: 31px;margin-left: 6px;margin-bottom: 15px
 
 .list_box .list_area .sprit_li {position: relative;overflow: hidden;border-bottom: 1px solid #eaeaea; padding:0}
 .list_box .list_area .sprit_li.sel {background:#E5E4E9}
-.list_box .list_area .sprit_li a {display: block;overflow: hidden;padding: 16px 10px 15px 10px;background: url(../images/common/bu_arr7.gif) no-repeat 100% 28px;background-size: 23px 12px;-webkit-background-size: 23px 12px;}
+.list_box .list_area .sprit_li a {display: block;overflow: hidden;padding: 16px 10px 15px 10px;background: url(http://romeoh.github.io/gaeyou/images/common/bu_arr7.gif) no-repeat 100% 28px;background-size: 23px 12px;-webkit-background-size: 23px 12px;}
 .list_box .list_area .sprit_li .txt_bx {display: block;margin-right: 23px;}
 .list_box .list_area .sprit_li .tit {display: block;overflow: hidden;font-size: 17px;color: #000;white-space: nowrap;text-overflow: ellipsis;}
 .list_box .list_area .sprit_li .dsc {display: block;overflow: hidden;margin-top: 3px;font-size: 13px;color: #999;white-space: nowrap;text-overflow: ellipsis;}
@@ -225,7 +225,7 @@ select {float: none;width: 70%;height: 31px;margin-left: 6px;margin-bottom: 15px
 .list_box .list_area .sprit_li .dsc .s16 {color:#E7990D}
 .list_box .list_area .sprit_li .dsc .s32 {color:#0DAAE7}
 .list_box .list_area .sprit_li .good {position:absolute; top:22px; right:28px; font-size:13px; color:#9E9C9C}
-.list_box .list_area .sprit_li .good .ico_good {background:url(../images/common/sp_btn.png) no-repeat; background-size:250px 250px; background-position:-22px -68px; width:16px; height:16px; display:inline-block; vertical-align:middle}
+.list_box .list_area .sprit_li .good .ico_good {background:url(http://romeoh.github.io/gaeyou/images/common/sp_btn.png) no-repeat; background-size:250px 250px; background-position:-22px -68px; width:16px; height:16px; display:inline-block; vertical-align:middle}
 
 .list_box .hot_area {border-bottom-left-radius:0; border-bottom-right-radius:0;}
 
@@ -239,7 +239,7 @@ select {float: none;width: 70%;height: 31px;margin-left: 6px;margin-bottom: 15px
 
 
 
-.worldcup {background:url(../images/common/vs.png) no-repeat center 85px #fff; min-height:150px; padding:10px; display:none}
+.worldcup {background:url(http://romeoh.github.io/gaeyou/images/common/vs.png) no-repeat center 85px #fff; min-height:150px; padding:10px; display:none}
 .worldcup .play {border: 1px solid #979ba5; min-height: 29px; border-radius: 5px;box-shadow: 0 0 1px rgba(0,0,0,.3); width:40%; text-align:center; padding:25px 0; cursor:pointer; background:#dcdfe3}
 .worldcup .play.t32 {background:#dcdfe3}
 .worldcup .play.t16 {background:#F3C3E0}

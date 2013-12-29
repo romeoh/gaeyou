@@ -34,7 +34,7 @@
 .container .box .finfo .author .sharebox .num {position:absolute; bottom:22px; right:00px; text-align:center; width:51px; color:#c93e1e; font-weight:bolder}
 .container .box .finfo .author .sharebox img {width:51px}
 .container .box .finfo .author .shareInfo {font-size:12px; margin-left:5px}
-.container .box .finfo .author .shareInfo .ico {display:inline-block;background:url('../images/common/ico_share.png') no-repeat; background-size:46px 13px; width:18px; height:13px; vertical-align:top}
+.container .box .finfo .author .shareInfo .ico {display:inline-block;background:url('http://romeoh.github.io/gaeyou/images/common/ico_share.png') no-repeat; background-size:46px 13px; width:18px; height:13px; vertical-align:top}
 .container .box .finfo .author .shareInfo .ico.heart {background-position:-14px 0px;}
 .container .box .finfo .author .shareInfo .ico.reply {background-position:-30px 0px;}
 .container .box .contents {clear:both; padding-top:10px}
@@ -49,13 +49,13 @@
 .container .newMovie .btn {position:absolute; top:2px}
 .container .newMovie .btn.left {left:5px}
 .container .newMovie .btn.right {right:5px}
-.container .newMovie .btn .ico {background:url(../images/common/sp_btn.png) no-repeat; width:11px; height:16px; background-size:250px 250px}
+.container .newMovie .btn .ico {background:url(http://romeoh.github.io/gaeyou/images/common/sp_btn.png) no-repeat; width:11px; height:16px; background-size:250px 250px}
 .container .newMovie .btn.left .ico {background-position:3px -14px}
 .container .newMovie .btn.right .ico {background-position:-11px -14px}
 .container .newMovie .btn a {color:#000; text-decoration:none}
 
 .addTime {padding:25px 10px}
-.addTime .opt {display: inline-block; background: url(../images/common/ico_ent.png) no-repeat -49px -91px; width:18px; height:10px}
+.addTime .opt {display: inline-block; background: url(http://romeoh.github.io/gaeyou/images/common/ico_ent.png) no-repeat -49px -91px; width:18px; height:10px}
 .addTime .opt2 {display: inline-block; width:18px; height:10px}
 .addTime .inp_list {margin:5px 20px}
 .addTime .inp_list input {border:1px solid #D1D2CA; padding:5px; width:100%;}
@@ -68,11 +68,11 @@
 /* 타이라인 보기 */
 .viewCon {margin:25px 15px; position:relative}
 .viewCon .viewShareInfo {font-size:12px}
-.viewCon .viewShareInfo .ico {display:inline-block;background:url('../images/common/ico_share.png') no-repeat; background-size:46px 13px; width:18px; height:13px; vertical-align:top}
+.viewCon .viewShareInfo .ico {display:inline-block;background:url('http://romeoh.github.io/gaeyou/images/common/ico_share.png') no-repeat; background-size:46px 13px; width:18px; height:13px; vertical-align:top}
 .viewCon .viewShareInfo .ico.heart {background-position:-14px 0px;}
 .viewCon .viewShareInfo .ico.reply {background-position:-30px 0px;}
 .viewCon .imos {margin:3px 0}
-.viewCon .imos .ico {display:inline-block; background:url('../images/common/imoticon.png') no-repeat; background-size:146px 30px; width:29px; height:30px}
+.viewCon .imos .ico {display:inline-block; background:url('http://romeoh.github.io/gaeyou/images/common/imoticon.png') no-repeat; background-size:146px 30px; width:29px; height:30px}
 .viewCon .imos .ico.i0 {background-position:0px 0px; }
 .viewCon .imos .ico.i1 {background-position:-29px 0px; }
 .viewCon .imos .ico.i2 {background-position:-57px 0px; }
