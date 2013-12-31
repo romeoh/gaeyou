@@ -438,7 +438,7 @@ function getReplys() {
 					str += '<li class="more" data-replymore>댓글 더 불러오기</li>';
 				}
 				for (var i=0; i<result.length; i++) {
-					console.log(result[i])
+					//console.log(result[i])
 					var  idx = result[i]['idx']
 						,kasid = decodeURIComponent(result[i]['kasid'])
 						,photo = result[i]['photo']
