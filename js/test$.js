@@ -18,7 +18,7 @@ var  pollList = M.storage('pollList') || []
 	// 신규테스트 불러오기
 	,newStart = 0
 	,newTotal = 20
-
+	,listFlag = M.storage('listFlag') || 'hot'
 	
 window.addEventListener('DOMContentLoaded', ready, false);
 window.addEventListener('hashchange', function() {
@@ -43,6 +43,26 @@ function ready() {
 			})
 			.val(uname)
 	}
+	
+	// 인기테스트 타이틀 변경
+	if (listFlag == 'hot') {
+		M('#hotListTitle').html('인기 테스트')
+		M('#hotListOrder')
+			.html('<i class="fa fa-arrow-circle-o-right"></i> 최신 실행순으로 정렬하기')
+			.on('click', function(){
+				M.storage('listFlag', 'new');
+				window.location.reload();
+			})
+	} else {
+		M('#hotListTitle').html('최근 테스트')
+		M('#hotListOrder')
+			.html('<i class="fa fa-arrow-circle-o-right"></i> 인기순으로 정렬하기')
+			.on('click', function(){
+				M.storage('listFlag', 'hot');
+				window.location.reload();
+			})
+	}
+	M.storage('listFlag', listFlag);
 	
 	// 현재 테스트 전문통신
 	bodyData = {
@@ -309,7 +329,7 @@ function getTestAll() {
 }
 
 
-// 인기테스트 더보기
+// 신규 테스트 더보기
 function getHotTest() {
 	bodyData = {
 		'total': hotTotal,
@@ -372,15 +392,15 @@ function getHotTest() {
 	})
 }
 
-
+// 다른 테스트 리스트 전문통신
 function getNewTest() {
-	// 다른 테스트 리스트 전문통신
 	bodyData = {
 		'total': newTotal,
-		'start': newStart
+		'start': newStart,
+		'flag': listFlag
 	}
 	$.ajax({
-		 'url': apiurl + code + '_get_all.php'
+		 'url': apiurl + code + '_get_all$.php'
 		,'contentType': 'application/x-www-form-urlencoded'
 		,'data': bodyData
 		,'type': 'POST'
