@@ -115,8 +115,14 @@ function ready() {
 			M('#qauthor').html(author)
 			M('#exp').html(testData['exp']);
 			M('#total').html('총 ' + M.toCurrency(testData['resultLeng']) + '개의 결과가 있습니다.');
+			
+			if (result['excute'] > 1000) {
+				excute = '999+';
+			} else {
+				excute = result['excute']+'회';
+			}
 			M('#btnTest')
-				.html('<span><em class="ico_star_check"></em> 카스로 확인(' + M.toCurrency(result['excute']) + '회)</span></a>')
+				.html('<span><em class="ico_star_check"></em> 카스로 확인(' + excute + ')</span></a>')
 				.on('click', testExcute)
 			M('#btnGaeup')
 				.html('<span><em class="ico_gaeup"></em> 깨업(' + M.toCurrency(result['gaeup']) + '회)</span></a>')
@@ -552,7 +558,13 @@ function testExcute() {
 		,'type': 'POST'
 		,'success': function(result){
 			var  result = M.json(result)
-			M('#btnTest').html('<span><em class="ico_star_check"></em> 카스로 확인(' + result['total'] + '회)</span></a>');
+			
+			if (result['total'] > 1000) {
+				excute = '999+';
+			} else {
+				excute = result['total']+'회';
+			}
+			M('#btnTest').html('<span><em class="ico_star_check"></em> 카스로 확인(' + excute + ')</span></a>');
 			
 			thumidx = process(dataThum)
 			
