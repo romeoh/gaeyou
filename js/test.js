@@ -4,7 +4,7 @@ var  pollList = M.storage('pollList') || []
 	,testReplyList = M.storage('testReplyList') || []
 	,cuTest
 	,apiurl = 'http://gaeyou.com/api/'
-	,testData = {}
+	,cuData = {}
 	
 	// 인기테스트 불러오기
 	,getOrder = process(0, 4)
@@ -46,7 +46,7 @@ function ready() {
 	
 	// 인기테스트 타이틀 변경
 	if (listFlag == 'hot') {
-		M('#hotListTitle').html('인기 테스트')
+		M('#hotListTitle').html('급상승 인기 테스트')
 		M('#hotListOrder')
 			.html('<i class="fa fa-arrow-circle-o-right"></i> 최신 실행순으로 정렬하기')
 			.on('click', function(){
@@ -56,7 +56,7 @@ function ready() {
 	} else {
 		M('#hotListTitle').html('최근 테스트')
 		M('#hotListOrder')
-			.html('<i class="fa fa-arrow-circle-o-right"></i> 인기순으로 정렬하기')
+			.html('<i class="fa fa-arrow-circle-o-right"></i> 급상승 인기순으로 정렬하기')
 			.on('click', function(){
 				M.storage('listFlag', 'hot');
 				window.location.reload();
@@ -82,39 +82,39 @@ function ready() {
 				return false;
 			}
 			hash = result.idx
-			testData.idx = result.idx;
-			testData.uname = decodeURIComponent(result.uname);
-			testData.kasid = decodeURIComponent(result.kasid);
-			testData.title = decodeURIComponent(result.title);
-			testData.exp = decodeURIComponent(result.exp);
-			testData.result = decodeURIComponent(result.result);
-			testData.view = result.view;
-			testData.gaeup = result.gaeup;
-			testData.excute = result.excute;
-			testData.modifyDate = result.modifyDate;
-			testData.regDate = result.regDate;
-			testData.resultLeng = result.resultLeng;
-			testData.good = result.good;
+			cuData.idx = result.idx;
+			cuData.uname = decodeURIComponent(result.uname);
+			cuData.kasid = decodeURIComponent(result.kasid);
+			cuData.title = decodeURIComponent(result.title);
+			cuData.exp = decodeURIComponent(result.exp);
+			cuData.result = decodeURIComponent(result.result);
+			cuData.view = result.view;
+			cuData.gaeup = result.gaeup;
+			cuData.excute = result.excute;
+			cuData.modifyDate = result.modifyDate;
+			cuData.regDate = result.regDate;
+			cuData.resultLeng = result.resultLeng;
+			cuData.good = result.good;
 			
-			deleteAble = checkUniq('test', testData['idx']);
+			deleteAble = checkUniq('test', cuData['idx']);
 			if (admin) {
 				deleteAble = true;
 			}
-			M('#qtitle').html( testData['title'] );
-			if (testData['kasid'] == '') {
-				author = '작성자: ' + testData['uname'] + ' | <span>조회: <span id="viewCount">' + M.toCurrency(result['view']) + '</span>회</span>';
+			M('#qtitle').html( cuData['title'] );
+			if (cuData['kasid'] == '') {
+				author = '작성자: ' + cuData['uname'] + ' | <span>조회: <span id="viewCount">' + M.toCurrency(result['view']) + '</span>회</span>';
 			} else {
-				author = '작성자: <a href="../r/u.html#' + testData['kasid'] + '">☞ ' + testData['uname'] + '님카스</a> | <span>조회: <span id="viewCount">' + M.toCurrency(result['view']) + '</span>회</span>';
+				author = '작성자: <a href="../r/u.html#' + cuData['kasid'] + '">☞ ' + cuData['uname'] + '님카스</a> | <span>조회: <span id="viewCount">' + M.toCurrency(result['view']) + '</span>회</span>';
 			}
 			if (deleteAble) {
-				author += ' | <span data-delrank="' + testData['idx'] + '">삭제</span>';
+				author += ' | <span data-delrank="' + cuData['idx'] + '">삭제</span>';
 			}
 			if (admin) {
-				author += ' | <span data-good="' + testData['idx'] + '">추천</span>';
+				author += ' | <span data-good="' + cuData['idx'] + '">추천</span>';
 			}
 			M('#qauthor').html(author)
-			M('#exp').html(testData['exp']);
-			M('#total').html('총 ' + M.toCurrency(testData['resultLeng']) + '개의 결과가 있습니다.');
+			M('#exp').html(cuData['exp']);
+			M('#total').html('총 ' + M.toCurrency(cuData['resultLeng']) + '개의 결과가 있습니다.');
 			
 			if (result['excute'] > 1000) {
 				excute = '999+';
@@ -127,7 +127,7 @@ function ready() {
 			M('#btnGaeup')
 				.html('<span><em class="ico_gaeup"></em> 깨업(' + M.toCurrency(result['gaeup']) + '회)</span></a>')
 				//.on('click', setGaeup)
-			M('#creator').html(testData.uname + '님에게 한마디')
+			M('#creator').html(cuData.uname + '님에게 한마디')
 			
 			getTestList();
 			getTestAll();
@@ -191,119 +191,14 @@ function ready() {
 			}
 		}
 	})
-	
-	// 댓글
-	M('#inpReply').on('focus', function(evt, mp){
-		mp.focus();
-		showReply();
-	})
-	M('#inpReply').on('blur', function(evt, mp){
-		hideReply();
-	})
-	
-	M('#uname').on('focus', function(evt, mp){
-		showReply();
-	})
-	M('#uname').on('blur', function(evt, mp){
-		M.storage('uname', mp.val())
-		hideReply();
-	})
-	
-	M('#kasid').on('focus', function(evt, mp){
-		showReply();
-	})
-	M('#kasid').on('blur', function(evt, mp){
-		M.storage('kasid', mp.val())
-		hideReply();
-	})
-	
-	if ( M.storage('uname') ) {
-		M('#uname').val(M.storage('uname'))
-	}
-	if ( M.storage('kasid') ) {
-		M('#kasid').val(M.storage('kasid'))
-	}
-	
-	// 댓글 180자 제한
-	M('#inpReply').on('keyup', function(evt, mp){
-		var txt = mp.html()
-		if (txt.length >= 180) {
-			mp.html( txt.substr(0, 170) );
-			alert('180자 이상 입력할수 없습니다.');
-		}
-	})
-	
-	// 댓글쓰기 전문통신
-	M('#btnSubmit').on('click', function(evt, mp){
-		if (M('#inpReply').html() == '') {
-			alert('내용을 입력해주세요.');
-			M('#inpReply').focus();
-			return false;
-		}
-		if (M('#inpReply').hasClass('msg')) {
-			alert('내용을 입력해주세요.');
-			M('#inpReply').focus();
-			return false;
-		}
-		
-		if (M('#uname').val() == '') {
-			alert('이름을 입력해주세요.');
-			M('#uname').css('display', 'block');
-			M('#kasid').css('display', 'block');
-			M('#uname').focus();
-			return false;
-		}
-		M.storage('uname', M.storage('uname'));
-		M.storage('kasid', M.storage('kasid'));
-		
-		imoidx = process(dataPhoto);
-		imoticon = dataPhoto[imoidx]
-		bodyData = {
-			'idx': testData['idx'],
-			'uname': encodeURIComponent(M('#uname').val()),
-			'kasid': encodeURIComponent(M('#kasid').val()),
-			'photo': encodeURIComponent(imoticon),
-			'text': encodeURIComponent(M('#inpReply').html())
-		}
-		$.ajax({
-			 'url': apiurl + code + '_reply_add.php'
-			,'contentType': 'application/x-www-form-urlencoded'
-			,'data': bodyData
-			,'type': 'POST'
-			,'success': function(result){
-				var result = M.json(result);
-				replyId = result['id'];
-				
-				if (typeof testReplyList === 'string') {
-					testReplyList = M.json(testReplyList);
-				}
-				testReplyList.push(replyId);
-				M.storage('testReplyList', M.json(testReplyList));
-				window.location.reload();
-			}
-		})
-	})
 }
 
-function showReply() {
-	if (M('#inpReply').hasClass('msg')) {
-		M('#inpReply')
-			.removeClass('msg')
-			.html('')
-	}
-	M('#uname').css('display', 'block');
-	M('#kasid').css('display', 'block');
-}
-function hideReply() {
-	M('#uname').css('display', 'none');
-	M('#kasid').css('display', 'none');
-}
 
 // 현재 테스트 항목 가져오기
 function getTestList(){
 	// 현재 랭킹 리스트 전문통신
 	bodyData = {
-		'idx': testData['idx']
+		'idx': cuData['idx']
 	}
 	$.ajax({
 		 'url': apiurl + code + '_get_list.php'
@@ -314,9 +209,9 @@ function getTestList(){
 			var  str = ''
 				,result = M.json(result);
 
-			testData.lists = [];
+			cuData.lists = [];
 			for (var i=0; i<result.length; i++) {
-				testData.lists.push(decodeURIComponent(result[i]['text']).split('|'));
+				cuData.lists.push(decodeURIComponent(result[i]['text']).split('|'));
 			}
 		}
 	})
@@ -364,7 +259,7 @@ function getHotTest() {
 			}*/
 			
 			for (var i=0; i<result.length; i++) {
-				if (testData['idx'] == result[i]['idx']) {
+				if (cuData['idx'] == result[i]['idx']) {
 					sel = ' sel'
 				} else {
 					sel = ''
@@ -416,7 +311,7 @@ function getNewTest() {
 			
 			newStart = newTotal + newStart;
 			for (var i=0; i<result.length; i++) {
-				if (testData['idx'] == result[i]['idx']) {
+				if (cuData['idx'] == result[i]['idx']) {
 					sel = ' sel'
 				} else {
 					sel = ''
@@ -453,14 +348,14 @@ function getNewTest() {
 function initGaeup() {
 	// 깨업
 	M('#btnGaeup').on('click', function(evt, mp){
-		if ( checkUniq('testGaeupList', testData['idx']) ) {
+		if ( checkUniq('testGaeupList', cuData['idx']) ) {
 			alert('이미 깨업하셨습니다.');
 			return false;
 		}
 		
 		// 깨업 전문 통신
 		bodyData = {
-			'idx': testData['idx']
+			'idx': cuData['idx']
 		}
 		$.ajax({
 			 'url': apiurl + code + '_gaeup.php'
@@ -470,7 +365,7 @@ function initGaeup() {
 			,'success': function(result){
 				var  result = M.json(result)
 				
-				setUniq('testGaeupList', testData['idx']);
+				setUniq('testGaeupList', cuData['idx']);
 				M('#btnGaeup').html('<span><em class="ico_gaeup"></em>깨업 (' + result['total'] + '회)</span></a>');
 			}
 		})
@@ -480,9 +375,9 @@ function initGaeup() {
 // 조회수 올리기
 function initView() {
 	// 조회수 업데이트
-	if ( !checkUniq('testViewList', testData['idx']) ) {
+	if ( !checkUniq('testViewList', cuData['idx']) ) {
 		bodyData = {
-			'idx': testData['idx'],
+			'idx': cuData['idx'],
 			'code': code,
 			'url': window.location.href,
 			'ua': navigator.userAgent
@@ -495,7 +390,7 @@ function initView() {
 			,'success': function(result){
 				var  result = M.json(result)
 				
-				setUniq('testViewList', testData['idx']);
+				setUniq('testViewList', cuData['idx']);
 				M('#viewCount').html(result['total']);
 			}
 		})
@@ -506,7 +401,7 @@ function initView() {
 // 테스트 실행
 function testExcute() {
 	var  userName = M('#userName').val()
-		,result = testData['result']
+		,result = cuData['result']
 		,post = ''
 		
 	if (userName == '') {
@@ -515,41 +410,41 @@ function testExcute() {
 	}
 	result = result.replace(/#이름#/, userName)
 	if (result.indexOf('#항목1#') != -1) {
-		ranList1 = testData['lists'][0]
+		ranList1 = cuData['lists'][0]
 		idx1 = process(ranList1)
 		result = result.replace(/#항목1#/, ranList1[idx1])
 	}
 	if (result.indexOf('#항목2#') != -1) {
-		ranList2 = testData['lists'][1]
+		ranList2 = cuData['lists'][1]
 		idx2 = process(ranList2)
 		result = result.replace(/#항목2#/, ranList2[idx2])
 	}
 	if (result.indexOf('#항목3#') != -1) {
-		ranList3 = testData['lists'][2]
+		ranList3 = cuData['lists'][2]
 		idx3 = process(ranList3)
 		result = result.replace(/#항목3#/, ranList3[idx3])
 	}
 	if (result.indexOf('#항목4#') != -1) {
-		ranList4 = testData['lists'][3]
+		ranList4 = cuData['lists'][3]
 		idx4 = process(ranList4)
 		result = result.replace(/#항목4#/, ranList4[idx4])
 	}
 	if (result.indexOf('#항목5#') != -1) {
-		ranList5 = testData['lists'][4]
+		ranList5 = cuData['lists'][4]
 		idx5 = process(ranList5)
 		result = result.replace(/#항목5#/, ranList5[idx5])
 	}
 			
-	post += getSpecial() + ' ' + testData['title'] + '\n'
+	post += getSpecial() + ' ' + cuData['title'] + '\n'
 	post += '────────────────────\n'
 	//post += '[결과]\n'
 	post += result + '\n\n';
-	post += 'http://gaeyou.com/t/#' + testData['idx'];
+	post += 'http://gaeyou.com/t/#' + cuData['idx'];
 	console.log(post);
 	
 	// 테스트 전문 통신
 	bodyData = {
-		'idx': testData['idx']
+		'idx': cuData['idx']
 	}
 	$.ajax({
 		 'url': apiurl + code + '_excute.php'
@@ -569,16 +464,16 @@ function testExcute() {
 			thumidx = process(dataThum)
 			
 			urlinfo = {
-				'title': getSpecial() + ' ' +testData['title'],
-				'desc': testData['exp'],
+				'title': getSpecial() + ' ' +cuData['title'],
+				'desc': cuData['exp'],
 				//'imageurl': ['http://www.gaeyou.com/images/thum/'+dataThum[thumidx]],
-				'imageurl': ['http://www.gaeyou.com/upload/fonts/'+testData['idx']+'.png'],
+				'imageurl': ['http://www.gaeyou.com/upload/fonts/'+cuData['idx']+'.png'],
 				'type': 'article'
 			}
 			kakao.link("story").send({   
 		        appid : 'gaeyou',
 				appver : '1.0',
-				appname : testData['uname']+'님 제작',//'★깨알유머★를 검색하세요!!',
+				appname : cuData['uname']+'님 제작',//'★깨알유머★를 검색하세요!!',
 		        post : post,
 				urlinfo : M.json(urlinfo)
 		    });
@@ -591,7 +486,7 @@ function testExcute() {
 // 댓글 가져오기 전문통신
 function getReply(){
 	bodyData = {
-		'idx': testData['idx'],
+		'idx': cuData['idx'],
 		'total': replyTotal,
 		'start': replyStart
 	}
