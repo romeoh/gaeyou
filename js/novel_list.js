@@ -62,6 +62,7 @@ function getNewList() {
 		newStart = newTotal + newStart;
 			
 		for (var i=0; i<result.length; i++) {
+			var recommand = parseInt(result[i]['good'], 10) - parseInt(result[i]['bad'], 10);
 			str += '<li>';
 			str += '	<a href="./#' + result[i]['idx'] + '">';
 			str += '		<img src="../upload/novel/'+result[i]['idx']+'.png" style="width:80px; height:80px">';
@@ -71,7 +72,7 @@ function getNewList() {
 			str += '			<i class="fa fa-book"></i> ' + result[i]['fic_count'] + '';
 			str += '			<i class="fa fa-eye"></i> ' + result[i]['view'] + '';
 			str += '			<i class="fa fa-comments"></i> ' + result[i]['reply'] + '';
-			//str += '			<i class="fa fa-bookmark"></i> ' + decodeURIComponent( result[i]['genre'] ) + '';
+			str += '			<i class="fa fa-thumbs-up"></i> ' + recommand + '';
 			if (result[i]['mode'] == 'private') {
 				str += '			<i class="fa fa-lock fa-red"></i>';
 			} else {
@@ -109,6 +110,7 @@ function getHotList() {
 		hotStart = hotTotal + hotStart;
 			
 		for (var i=0; i<result.length; i++) {
+			var recommand = parseInt(result[i]['good'], 10) - parseInt(result[i]['bad'], 10)
 			str += '<li>';
 			str += '	<a href="./#' + result[i]['idx'] + '">';
 			str += '		<img src="../upload/novel/'+result[i]['idx']+'.png" style="width:80px; height:80px">';
@@ -118,7 +120,7 @@ function getHotList() {
 			str += '			<i class="fa fa-book"></i> ' + result[i]['fic_count'] + '';
 			str += '			<i class="fa fa-eye"></i> ' + result[i]['view'] + '';
 			str += '			<i class="fa fa-comments"></i> ' + result[i]['reply'] + '';
-			//str += '			<i class="fa fa-bookmark"></i> ' + decodeURIComponent( result[i]['genre'] ) + '';
+			str += '			<i class="fa fa-thumbs-up"></i> ' + recommand + '';
 			if (result[i]['mode'] == 'private') {
 				str += '			<i class="fa fa-lock fa-red"></i>';
 			} else {

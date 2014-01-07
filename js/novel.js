@@ -31,6 +31,13 @@ function ready() {
 		}
 	})
 	
+	M('#btnGaeup').on('click', function(){
+		setGaeup('up')
+	})
+	M('#btnGaedown').on('click', function(){
+		setGaeup('down')
+	})
+	
 	// 썰 전문통신
 	databody = {
 		'idx': hash
@@ -49,6 +56,7 @@ function ready() {
 		cuData['first_fic'] = decodeURIComponent(result.first_fic);
 		cuData['reply'] = result.reply;
 		cuData['good'] = result.good;
+		cuData['bad'] = result.bad;
 		cuData['fic_count'] = result.fic_count;
 		cuData['view'] = result.view;
 		cuData['regDate'] = result.regDate;
@@ -98,6 +106,8 @@ function ready() {
 		M('#replyTitle').html('<i class="fa fa-smile-o"></i> ' + cuData['reply'] + '개의 댓글이 있습니다. ');
 		M('#charactor').html(str);
 		M('#btnGoReply').attr('href', './reply.html#'+cuData['idx']);
+		M('#btnGaeup').html('<i class="fa fa-thumbs-up"></i> 깨업 (' + cuData['good'] + ')')
+		M('#btnGaedown').html('<i class="fa fa-thumbs-down"></i> 깨따 (' + cuData['bad'] + ')')
 		
 		novelStr += '<div class="para">';
 		novelStr += '	<div class="author">도입부</div>';
@@ -117,6 +127,30 @@ function ready() {
 	initWriteFiction();
 }
 
+// 깨업
+function setGaeup(flag) {
+	if ( checkUniq('novel_gaeup_list', cuData['idx']) ) {
+		alert('이미 평가 하셨습니다.');
+		return false;
+	}
+
+	// 깨업
+	databody = {
+		'idx': hash,
+		'flag': flag
+	}
+	request(code+'_gaeup', databody, function(result){
+		var  result = M.json(result)
+				
+		setUniq('novel_gaeup_list', cuData['idx']);
+		if (result['flag'] == 'up') {
+			M('#btnGaeup').html('<i class="fa fa-thumbs-up"></i> 깨업 (' + result['total'] + ')')
+		} else if (result['flag'] == 'down') {
+			M('#btnGaedown').html('<i class="fa fa-thumbs-down"></i> 깨따 (' + result['total'] + ')')
+		}
+		
+	})
+}
 
 // 썰픽 가져오기 전문
 function getFiction() {
