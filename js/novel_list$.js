@@ -55,7 +55,7 @@ function getNewList() {
 		'start': newStart,
 		'total': newTotal
 	}
-	request(code+'_get_list', databody, function(result){
+	request(code+'_get_list$', databody, function(result){
 		var  result = M.json(result)
 			,str = ''
 		

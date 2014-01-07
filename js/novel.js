@@ -222,7 +222,7 @@ function initWriteFiction() {
 	M('#fcontent').on('blur', function(evt, mp){
 		if (mp.val() == '') {
 			mp.addClass('place');
-			mp.val('심각한 욕설, 선정적인 표현은 삭제될 수 있습니다.');
+			mp.val('심각한 욕설, 너무 선정적인 내용은 자제 부탁드려요.');
 		}
 	})
 	M('#fcontent').on('keyup', function(evt, mp){
