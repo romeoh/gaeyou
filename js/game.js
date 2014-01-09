@@ -10,7 +10,10 @@ window.addEventListener('hashchange', function() {
 }, false);
 
 function ready() {
-	
+	M('#play').on('click', function(){
+		window.location.href = 'http://m.gamesgames.com/html5games/en_US/Snail+bob/'
+	})
+	return;
 	
 	/*if (!admin) {
 		alert('서비스 점검중입니다.');

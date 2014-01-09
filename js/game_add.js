@@ -31,9 +31,6 @@ function ready() {
 		viewChar();
 	})
 	
-	reloadNotice();
-	M('#btnReload').on('click', reloadNotice);
-	
 	// 유효성 검사
 	M('#btnReg').on('click', function(){
 		var  bodyData
@@ -191,37 +188,6 @@ function checkCount() {
 	}
 }
 
-function reloadNotice() {
-	var str = shuffle(database);
-	M('#addNotice').html('예) '+str[0])
-}
-
-database = [
-	'친구에게 배신당한 썰',
-	'엄마가 감동한 썰',
-	'친구에게 애인을 뺏긴 썰',
-	'선생님을 속인 썰',
-	'웃긴 거짓말한 썰',
-	'친구의 뒷통수를 친 썰',
-	'이상형과 마주친 썰',
-	'첫키스한 썰',
-	'이상형에게 차인 썰',
-	'친척이랑 싸운 썰',
-	'친구랑 화해한 썰',
-	'친구와 오해가 풀린 썰',
-	'옛날에 사고났던 썰',
-	'부모님이랑 싸운 썰',
-	'형제랑 싸운 썰',
-	'친구가 나때문에 오해한 썰',
-	'친구를 따돌린 썰',
-	'카톡할때 웃꼈던 썰',
-	'시험 0점 맞은 썰',
-	'선생님한테 억울하게 엄청 맞은 썰',
-	'단체로 벌 받은 썰',
-	'친구랑 치고박고 싸운 썰',
-	'친구랑 절교한 썰',
-	'애인이랑 헤어진 이유 썰'
-]
 
 
 

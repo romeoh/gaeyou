@@ -45,8 +45,8 @@ function ready() {
 	}
 	M.storage('listFlag', listFlag);
 	
-	getNewList();
-	getHotList();
+	//getNewList();
+	//getHotList();
 }
 
 // 신규

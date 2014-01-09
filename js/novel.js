@@ -47,6 +47,9 @@ function ready() {
 			,str = ''
 			,novelStr = ''
 		
+		if (result['idx'] == undefined) {
+			window.location.href = './list.html';
+		}
 		cuData['idx'] = hash = result.idx;
 		cuData['author'] = decodeURIComponent(result.author);
 		cuData['kasid'] = decodeURIComponent(result.kasid);
@@ -61,6 +64,7 @@ function ready() {
 		cuData['view'] = result.view;
 		cuData['regDate'] = result.regDate;
 		cuData['charactor'] = [];
+		deleteAble = checkUniq(code, cuData['idx']);
 		
 		for (var i=0; i<result.charactor.length; i++) {
 			var  chara = {}
@@ -108,6 +112,43 @@ function ready() {
 		M('#btnGoReply').attr('href', './reply.html#'+cuData['idx']);
 		M('#btnGaeup').html('<i class="fa fa-thumbs-up"></i> 깨업 (' + cuData['good'] + ')')
 		M('#btnGaedown').html('<i class="fa fa-thumbs-down"></i> 깨따 (' + cuData['bad'] + ')')
+		
+		if (deleteAble || admin) {
+			M('#trash')
+				.html('<i class="fa fa-trash-o"></i> ' + cuData['title'] + ' 삭제')
+				.css('display', 'block')
+				.data('trash', cuData['idx'])
+				.on('click', function(evt, mp){
+					if(!confirm('이 썰을 삭제하시겠습니까?')) {
+						return false;
+					}
+					id = mp.data('trash');
+					
+					bodyData = {
+						'idx': id,
+						'ua': navigator.userAgent
+					}
+					$.ajax({
+						 'url': apiurl + code + '_del.php'
+						,'contentType': 'application/x-www-form-urlencoded'
+						,'data': bodyData
+						,'type': 'POST'
+						,'success': function(result){
+							var result = M.json(result)
+								test = M.json(M.storage(code))
+								popList = []
+								
+							for (var i=0; i<test.length; i++) {
+								if (result['id'] != test[i]) {
+									popList.push(test[i])
+								}
+							}
+							M.storage(code, M.json(popList));
+							window.location.href = './list.html';
+						}
+					})
+				})
+		}
 		
 		novelStr += '<div class="para">';
 		novelStr += '	<div class="author">도입부</div>';
@@ -180,7 +221,7 @@ function getFiction() {
 		cuData['fiction'] = fiction
 		M('#novel').html(str);
 		M('[data-del]').on('click', function(evt, mp){
-			if(!confirm('테스트를 정말 삭제하시겠습니까?')) {
+			if(!confirm('썰을 정말 삭제하시겠습니까?')) {
 				return false;
 			}
 			var idx = mp.data('del')
@@ -191,7 +232,7 @@ function getFiction() {
 				'url': window.location.href
 			}
 			$.ajax({
-				 'url': apiurl + code + '_del.php'
+				 'url': apiurl + code + '_fiction_del.php'
 				,'contentType': 'application/x-www-form-urlencoded'
 				,'data': bodyData
 				,'type': 'POST'
