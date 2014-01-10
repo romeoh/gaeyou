@@ -258,7 +258,7 @@ function getFiction() {
 // 조회수 올리기
 function initView() {
 	// 조회수 업데이트
-	if ( !checkUniq(code + '_view', cuData['idx']) || admin) {
+	//if ( !checkUniq(code + '_view', cuData['idx']) || admin) {
 		bodyData = {
 			'idx': cuData['idx'],
 			'code': code,
@@ -277,7 +277,7 @@ function initView() {
 				//M('#viewCount').html(result['total']);
 			}
 		})
-	}
+	//}
 }
 
 

@@ -130,7 +130,7 @@ function setGaeup(flag) {
 // 조회수 올리기
 function initView() {
 	// 조회수 업데이트
-	if ( !checkUniq(code + '_view', cuData['idx']) ) {
+	//if ( !checkUniq(code + '_view', cuData['idx']) ) {
 	//if ( !checkUniq(code + '_view', cuData['idx']) || admin) {
 		bodyData = {
 			'idx': cuData['idx'],
@@ -150,7 +150,7 @@ function initView() {
 				//M('#viewCount').html(result['total']);
 			}
 		})
-	}
+	//}
 }
 
 
@@ -165,7 +165,7 @@ function getReply() {
 	request(code+'_reply_get', databody, function(result){
 		var  result = M.json(result)
 			,str = ''
-		
+
 		replyStart = replyTotal + replyStart;
 		
 		// 댓글가져오기
@@ -174,7 +174,13 @@ function getReply() {
 			str += '	<p class="no_reply"><i class="fa fa-pencil"></i> 제일 먼저 댓글을 작성해 보세요.</p>';
 			str += '</li>';
 		} else {
-			for (var i=0; i<result.length; i++) {
+			if (result.length < replyTotal) {
+				//str += '<li class="more">마지막입니다.</li>';
+			} else {
+				str += '<li class="more" data-replymore>댓글 더 불러오기</li>';
+			}
+			
+			for (var i=result.length-1; i>=0; i--) {
 				var  replys = {}
 					,deleteAble = checkUniq(code + '_list', result[i]['idx'])
 					//,n = i+1
@@ -195,12 +201,18 @@ function getReply() {
 				str += '	</div>';
 				str += '	<p>' + replys['text'] + '</p>';
 				str += '</li>';
-				
-			}	
+			}
 		}
 		
-		M('#reply_con').html(str);
+		M('#reply_con').html( str + M('#reply_con').html() );
 		M('#replyTitle').html('<i class="fa fa-smile-o"></i> 댓글 <span>(' + cuData['reply'] + '개)</span>')
+		
+		// 댓글 더보기
+		M('[data-replymore]').on('click', function(evt, mp){
+			mp.remove();
+			getReply();
+		})
+		
 		
 		// 삭제하기
 		if (deleteAble) {
