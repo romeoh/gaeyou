@@ -7,7 +7,7 @@
 
 body, p, h1, h2, h3, h4, h5, ul, li, dl, dt, dd, header {margin:0; padding:0; font-family: '나눔고딕',NanumGothic,'맑은 고딕','Malgun Gothic','돋움',Dotum,'굴림',Gulim,Helvetica,sans-serif;}
 body {background:#eceef0; margin:0}
-a {text-decoration:none; cursor:pointer;}
+a {text-decoration:none; cursor:pointer;color:#000}
 li {list-style:none;}
 header {background:url(http://romeoh.github.io/gaeyou/images/common/bg_header.png); background-size:18px 44px; height:44px; position:relative;}
 header .gnbMain {background-position:0px 0px; display:none; position:absolute; top:5px; left:5px; width:70px; height:32px;}
@@ -78,6 +78,17 @@ nav .new {display: inline-block;overflow: hidden;background-image: url(http://ro
 
 #snsBox {text-align:center}
 
+.btn {display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: normal;line-height: 1.428571429;text-align: center;vertical-align: middle;cursor: pointer;border: 1px solid transparent;border-radius: 4px;white-space: nowrap;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none; margin:3px;}
+.btn.btn-default {color: #333;background-color: #fff;border-color: #ccc;}
+.btn.btn-danger {color: #fff;background-color: #d9534f;border-color: #d43f3a;}
+.btn.btn-notice {color: #333;background-color: #FFBAC5;border-color: #DF6161;}
+.btn.btn-point {color: #333;background-color: #BAD0FF;border-color: #617ADF;}
+.btn.btn-small {padding:5px; font-size:12px}
+.btn.btn-lg {padding: 10px 16px;font-size: 18px;line-height: 1;border-radius: 6px;}
+.fa-red {color:#F78383}
+.fa-blue {color:#4FC0EC}
+.fa-green {color:#85D321}
+.fa-yellow {color:yellow}
 
 button {
 }

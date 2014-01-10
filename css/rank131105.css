@@ -96,11 +96,19 @@
 .event_box .opt {display: inline-block; background: url(http://romeoh.github.io/gaeyou/images/common/ico_ent.png) no-repeat -49px -91px; width:18px; height:10px}
 .event_box .opt2 {display: inline-block; width:18px; height:10px}
 .event_box .inp_list {margin:5px 20px 5px 20px}
+.event_box .inp_list textarea {width: 100%;height: 100px;font-size: 16px;}
 .event_box .inp_list input {; border:1px solid #D1D2CA; padding:5px; width:250px;}
 .event_box .ico_ent {display: inline-block;overflow: hidden;background: url(http://romeoh.github.io/gaeyou/images/common/ico_ent.png) no-repeat;text-indent: -9999px;vertical-align: top;}
 .event_box .ico_check {margin-top: 7px;width: 14px;height: 10px;background-position: -30px -90px;}
 .event_box .ico_vs {width: 25px;height: 15px;margin-top: 36px;background-position: -10px -110px;}
 .event_box .notice {font-size:14px; padding-left:16px; color:#1939E4}
+
+/* 소셜소설 */
+.event_box .inp_list2 {}
+.event_box .inp_list2 li {background:#E9E9E9; margin:5px 0; padding:10px; display:none}
+.event_box .inp_list2 li input {border:1px solid #D1D2CA; padding:5px; width:190px;}
+.event_box .inp_list2 li textarea {width:200px; vertical-align:top}
+.event_box .inp_list2 .buttons {text-align:center; padding:10px}
 
 .event_box .share_area {padding: 10px 0 1px 0;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;background: #fff;}
 .event_box .tab_area {display: table;width: 100%;table-layout: fixed;}
@@ -189,16 +197,20 @@ select {float: none;width: 70%;height: 31px;margin-left: 6px;margin-bottom: 15px
 /* 리스트 */
 .list_box {position: relative;overflow: hidden;margin: 5px 5px 0;border: 1px solid #979ba5;border-radius: 5px;box-shadow: 0 0 1px rgba(0,0,0,.3);}
 .list_box .tit_area {position: relative;padding-left: 15px;border-bottom: 1px solid #979ba5;border-top-left-radius: 5px;border-top-right-radius: 5px;line-height: 35px;box-shadow: inset 1px 1px 0 #f5f6f7,inset -1px 0 0 #f5f6f7;}
+.list_box .tit_area .order {position:absolute; top:0px; right:9px; font-size:12px; color:#999}
 .list_box .tit_area h2 {font-size: 15px;color: #29282c;letter-spacing: -1px;text-shadow: 0 1px 0 rgba(255,255,255,.55);text-align:left;}
 .list_box .tit_area h2 span {font-weight:normal; color:#666}
 /*.list_box.lastbox {margin-bottom:65px}*/
 
 .list_box .event_area {padding: 15px 10px 13px;background: #fff;border-bottom: 1px solid #aaa;background: #fff;}
-.list_box .list_area {position:relative; padding:15px 0px 13px;background: #fff;border-bottom: 1px solid; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;background: #fff}
-.list_box .list_area li {padding: 8px 15px;border-top: 1px solid #dddddf; list-style:none; position:relative; }
+.list_box .list_area,
+.list_box .game_list_area {position:relative; padding:15px 0px 13px;background: #fff;border-bottom: 1px solid; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;background: #fff}
+.list_box .list_area li,
+.list_box .game_list_area li {padding: 8px 15px;border-top: 1px solid #dddddf; list-style:none; position:relative; }
 .list_box .list_area li.sel {background:#eee}
 .list_box .list_area li img {width:40px; height:40px}
-.list_box .list_area li:first-child {border-top: none;}
+.list_box .list_area li:first-child,
+.list_box .game_list_area li:first-child {border-top: none;}
 .list_box .list_area li a {color: #333;}
 .list_box .list_area li a .thum {float:left;}
 .list_box .list_area li.sel 
@@ -208,7 +220,8 @@ select {float: none;width: 70%;height: 31px;margin-left: 6px;margin-bottom: 15px
 .list_box .list_area li a dd span {position: absolute;left: 0;color: #999;}
 .list_box .list_area li a dd strong {display: inline-block;overflow: hidden;max-width: 100%;letter-spacing: 0px;text-overflow: ellipsis;}
 .list_box .list_area li .letter {overflow:hidden;white-space:nowrap; text-overflow:ellipsis; position:absolute; top:7px; left:71px; width:60%; height:20px}
-.list_box .list_area li .info {position:absolute; top:28px; left:65px; font-size:13px}
+.list_box .list_area li .story {position:absolute; top:28px; left:105px; right:10px; height:44px; line-height:21px; overflow:hidden; font-size:15px; color:#888}
+.list_box .list_area li .info {position:absolute; bottom:5px; left:65px; font-size:13px}
 .list_box .list_area li .info span {color:#bbb}
 .list_box .list_area li .gaeup {position:absolute; top:20px; right:10px; color:#bbb; float:right; font-size:11px}
 .list_box .list_area .result_content {display:none;}
@@ -226,8 +239,39 @@ select {float: none;width: 70%;height: 31px;margin-left: 6px;margin-bottom: 15px
 .list_box .list_area .sprit_li .dsc .s32 {color:#0DAAE7}
 .list_box .list_area .sprit_li .good {position:absolute; top:22px; right:28px; font-size:13px; color:#9E9C9C}
 .list_box .list_area .sprit_li .good .ico_good {background:url(http://romeoh.github.io/gaeyou/images/common/sp_btn.png) no-repeat; background-size:250px 250px; background-position:-22px -68px; width:16px; height:16px; display:inline-block; vertical-align:middle}
-
 .list_box .hot_area {border-bottom-left-radius:0; border-bottom-right-radius:0;}
+
+/* 리스트 */
+.list_area {border-top: 1px solid #a7a8a9; margin-bottom:62px}
+.list_area .tit_area {border-bottom: 1px solid #a7a8a9}
+.list_area .tit_area h2 {font-size: 1.167em;color: #3d3f45;line-height: 2.008em;font-weight: bold;white-space: nowrap; padding-left:10px; text-align:left}
+.list_area .list_view {background:url('../images/common/bg_list.png'); padding:8px}
+.list_area .list_view .box_holder {overflow: hidden;position: relative;margin-bottom: 7px;border-radius: 3px;border: 1px solid #bababa;background: #fff;-webkit-box-shadow: 0 1px 1px rgba(186,186,186,.3);color:#252525; }
+.list_area .list_view .box_holder .thum {float:left; padding:0; line-height:0; border-right:1px solid #E4E4E4; height:116px; overflow:hidden}
+.list_area .list_view .box_holder .thum img {width:116px; height:116px;}
+.list_area .list_view .box_holder .item_detail {padding:9px 10px 0; overflow:hidden}
+.list_area .list_view .box_holder .item_detail h3 {font-size:14px; font-weight:bolder; min-height:22px; overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.list_area .list_view .box_holder .item_detail p {font-size:14px; font-weight:normal; min-height:62px; overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.list_area .list_view .box_holder .item_info {border-top:1px solid #E4E4E4; margin:-10px; padding:3px 10px; height:34px; text-align:right}
+.list_area .list_view .box_holder .item_info .num {padding:0 5px 0 3px; font-size:13px}
+.hot_area {margin-bottom:0px}
+
+
+.list_box .game_list_area li img {width:100%; border-radius:10px}
+.list_box .game_list_area li h3 {}
+.list_box .game_list_area li p {color:#858585}
+
+.list_box .game_list_area .game_info {margin-left:-10px; color:#858585}
+.list_box .game_list_area .game_info i {margin-left:13px}
+
+
+.game_box {padding:15px 15px 0 15px}
+.game_box .thum {height:135px; text-align:center; padding-bottom:10px}
+.game_box .thum img {height:100%; border-radius:10px}
+.game_box .btn_start {text-align:center; padding:10px}
+
+.game_launcher {width:480px !important; height:320px !important; border:none}
+
 
 
 .clipboard {position:absolute; top:37px; left:16px; z-index:999; background:#000; color:#fff; padding:5px}
@@ -313,6 +357,63 @@ padding: 8px 14px 9px;}
 .replyCon .rlist .author .kas a {font-size:13px; color:#bbb}
 .replyCon .rlist .replycon {padding-top:3px; padding-left:46px}
 .replyCon .more {text-align:center; padding:5px}
+
+/* 댓썰 */
+.novel_bg {background:#fff}
+.header {position:relative;border-bottom: 1px solid #777b83;}
+.header h2 {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;text-align:left;padding:15px 0px 15px 37px; font-size:18px; }
+.header .story {position:absolute; top:15px; right:47px}
+.header .list {position:absolute; top:16px; left:9px}
+.header i {color:#949494}
+.header .sel i {color:#FF32B5}
+.story_box {position:relative; border-bottom: 1px solid #777b83; padding:0 0 10px 0; background:#eee; display:;}
+.story_box.open {}
+.story_box.close {overflow:hidden; height:54px}
+.story_box .more {position:absolute; bottom:0px; right:0px}
+.story_box .info {padding:5px 5px 0 5px}
+.story_box .info li {text-align:left; padding:5px; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.story_box .trash {padding:5px 10px; color:#999; cursor:pointer; display:none}
+.people {padding:0px 5px 5px 5px; font-size:14px}
+.people dt {padding:5px; color:#2E45F1}
+.people dd {padding:2px 0 2px 20px}
+.people dd span {color:#bbb}
+.novel_view {margin:15px 15px 25px 15px; font-size:17px}
+.novel_view .para {margin-top:5px}
+.novel_view p {line-height:1.5em}
+.novel_view .author {color:#ccc; padding:10px 0 0 0px; font-size:13px}
+.novel_view .author span {color:#ADC7FD}
+.novel_view .author i {margin-left:5px}
+.recommand {text-align:center; padding:15px}
+
+.write_book {background:#f0f0f4; border-top:1px solid #605e6b; padding:10px 15px 22px 15px; position:relative; display:none}
+.write_book h2 {font-size:15px; text-align:left; color:#2d3038; padding:3px 0}
+.write_book .regist {position:absolute; right:7px; bottom:5px}
+
+.share_bg {background:#e0e2e6; padding:10px; border-top:1px solid #605e6b; border-bottom:1px solid #605e6b;}
+.share_bg2 {background:#F1F1F1; padding:10px; border-top:1px solid #ADACB3; border-bottom:1px solid #ADACB3;}
+.novel_reply {position:relative}
+.novel_reply h2 {font-size:15px; text-align:left; color:#2d3038; padding:15px}
+.novel_reply h2 span {color:#CA8F8F}
+.novel_reply li {border-top: 1px solid #e5e5e5; padding:13px 15px}
+.novel_reply .no_reply {text-align:center; color:#636863; padding:15px}
+.novel_reply .reply_info {color:#B9B9B9; padding:3px 0}
+.novel_reply .goReply {position:absolute; right:10px; top:10px}
+.reply_book {background:#f0f0f4; border-top:1px solid #605e6b; border-bottom:1px solid #605e6b; padding:10px 15px 22px 15px; position:relative}
+.reply_book h2 {font-size:15px; text-align:left; color:#2d3038; padding:3px 0}
+.reply_book .regist {position:absolute; right:7px; bottom:5px}
+
+.novel_con {}
+.novel_con .letter {left:105px !important; width:65% !important}
+.novel_con .info {left:96px !important}
+.novel_con .info i {margin-left:5px}
+
+.writebox input {width:90%; padding:5px; border:1px solid #A0A0A0}
+.writebox textarea {width:100%;font-size: 14px;}
+.adinfo {text-align:center; color:#F53EC9; display:none}
+.add_notice {position:relative; background:#F0F0F0; padding:10px; margin-bottom:20px}
+.add_notice h3 {color:#13A3C7; font-size:16px}
+.add_notice p {padding-top:5px; margin-right:32px}
+.add_notice .reload {position:absolute; bottom:0px; right:0px}
 
 
 
