@@ -1,4 +1,4 @@
-var  code = 'novel'
+var  code = 'game'
 	
 	// 신규리스트 가져오기
 	,newTotal = 5
@@ -45,7 +45,10 @@ function ready() {
 	}
 	M.storage('listFlag', listFlag);
 	
-	//getNewList();
+	if (admin) {
+		M('#btnNew').html('<a class="gnbNew" href="add.html"></a>');
+	}
+	getNewList();
 	//getHotList();
 }
 
@@ -56,6 +59,7 @@ function getNewList() {
 		'total': newTotal
 	}
 	request(code+'_get_list', databody, function(result){
+		console.log(result)
 		var  result = M.json(result)
 			,str = ''
 		
@@ -63,24 +67,26 @@ function getNewList() {
 			
 		for (var i=0; i<result.length; i++) {
 			var recommand = parseInt(result[i]['good'], 10) - parseInt(result[i]['bad'], 10);
-			str += '<li>';
+			
+			str += '<li class="">';
 			str += '	<a href="./#' + result[i]['idx'] + '">';
-			str += '		<img src="../upload/novel/'+result[i]['idx']+'.png" style="width:80px; height:80px">';
-			str += '		<div class="letter">' + decodeURIComponent( result[i]['title'] ) + '</div>';
-			str += '		<p class="story">' + decodeURIComponent( result[i]['first_fic'] ) + '</p>';
-			str += '		<div class="info">';
-			str += '			<i class="fa fa-book"></i> ' + result[i]['fic_count'] + '';
-			str += '			<i class="fa fa-eye"></i> ' + result[i]['view'] + '';
-			str += '			<i class="fa fa-comments"></i> ' + result[i]['reply'] + '';
-			str += '			<i class="fa fa-thumbs-up"></i> ' + recommand + '';
-			if (result[i]['mode'] == 'private') {
-				str += '			<i class="fa fa-lock fa-red"></i>';
-			} else {
-				str += '			<i class="fa fa-unlock fa-green"></i>';
-			}
+			str += '		<div class="box_holder">';
+			str += '			<div class="thum">';
+			str += '				<img src="../upload/game/thum/' + result[i]['thum'] + '">';
+			str += '			</div>';
+			str += '			<div class="item_detail">';
+			str += '				<h3>' + decodeURIComponent( result[i]['title'] ) + '</h3>';
+			str += '				<p>' + decodeURIComponent( result[i]['text'] ).replace(/\+/g, ' ') + '</p>';
+			str += '				<div class="item_info">';
+			str += '					<i class="fa fa-eye gray"></i><span class="num">' + result[i]['view'] + '</span>';
+			str += '					<i class="fa fa-comments gray"></i><span class="num">' + result[i]['reply'] + '</span>';
+			str += '					<i class="fa fa-thumbs-up gray"></i><span class="num">' + recommand + '</span>';
+			str += '				</div>';
+			str += '			</div>';
 			str += '		</div>';
 			str += '	</a>';
 			str += '</li>';
+			
 		}
 		if (result.length < newTotal) {
 			str += '<li class="more">마지막입니다.</li>';

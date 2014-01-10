@@ -1,6 +1,4 @@
-var  code = 'novel'
-	,charLength = 2
-	,novelLimite = 0
+var  code = 'game'
 
 window.addEventListener('DOMContentLoaded', ready, false);
 function ready() {
@@ -11,144 +9,89 @@ function ready() {
 		return false;
 	}*/
 	
-	checkCount();
-	viewChar();
-	
-	M('#btnAdd').on('click', function(){
-		if (charLength > 4) {
-			alert('기본 등장인물을 추가할 수 없습니다.');
-			return false;
-		}
-		charLength++;
-		viewChar();
-	})
-	M('#btnDel').on('click', function(){
-		if (charLength == 1) {
-			alert('등장인물은 최소 1명 이상이어야 합니다.');
-			return false;
-		}
-		charLength--;
-		viewChar();
-	})
-	
 	// 유효성 검사
 	M('#btnReg').on('click', function(){
 		var  bodyData
 			,title = M('#title').val()
-			,author = M('#author').val()
+			,game_url = M('#game_url').val()
+			,photo = M('#photo').val()
+			,large = M('#large').val()
 			,genre = M('#genre').val()
 			,mode = M('#mode').val()
-			,kasid = M('#kasid').val()
-			,startFic = M('#startFic').val()
-			,charactor = []
+			,desc = M('#desc').val()
 		
-		checkCount();
 		if (title === '') {
 			alert('제목을 입력해주세요.');
 			M('#title').focus()
 			return false;
 		}
-		if (author === '') {
-			alert('개설자명을 입력해주세요.');
-			M('#author').focus()
+		if (game_url === '') {
+			alert('게임 주소를 입력해주세요.');
+			M('#game_url').focus()
 			return false;
 		}
-		if (mode == '-1') {
-			alert('모드를 선택해주세요.');
-			M('#mode').focus()
+		if (photo == '') {
+			alert('썸네일 선택해주세요.');
+			M('#photo').focus()
+			return false;
+		}
+		if (large == '') {
+			alert('큰이미지를 선택해주세요.');
+			M('#large').focus()
 			return false;
 		}
 		if (genre == '-1') {
-			alert('썰픽의 장르를 선택해주세요.');
+			alert('장르를 선택해주세요.');
 			M('#genre').focus()
 			return false;
 		}
-		/*if (kasid === '') {
-			alert('카스아이디를 입력해주세요.');
+		if (mode == '-1') {
+			alert('화면모드를 선택해주세요.');
+			M('#mode').focus()
 			return false;
-		}*/
-		for (var i=1; i<charLength+1; i++) {
-			var chara = {}
-			if (M('[data-name="'+i+'"]').val() == '') {
-				alert('등장인물'+i+'의 이름을 입력해주세요.');
-				M('[data-name="'+i+'"]').focus()
-				return false;
-			}
-			/*
-			if (M('[data-sex="'+i+'"]').val() == '') {
-				alert('등장인물'+i+'의 성별을 입력해주세요.');
-				M('[data-sex="'+i+'"]').focus()
-				return false;
-			}
-			if (M('[data-age="'+i+'"]').val() == '') {
-				alert('등장인물'+i+'의 나이을 입력해주세요.');
-				M('[data-age="'+i+'"]').focus()
-				return false;
-			}
-			if (M('[data-job="'+i+'"]').val() == '') {
-				alert('등장인물'+i+'의 직업을 입력해주세요.');
-				M('[data-job="'+i+'"]').focus()
-				return false;
-			}
-			if (M('[data-point="'+i+'"]').val() == '') {
-				alert('등장인물'+i+'의 특징을 입력해주세요.');
-				M('[data-point="'+i+'"]').focus();
-				return false;
-			}
-			*/
-			chara['name'] = encodeURIComponent( M('[data-name="'+i+'"]').val() );
-			chara['sex'] = encodeURIComponent( M('[data-sex="'+i+'"]').val() );
-			chara['age'] = encodeURIComponent( M('[data-age="'+i+'"]').val() );
-			chara['job'] = encodeURIComponent( M('[data-job="'+i+'"]').val() );
-			chara['point'] = encodeURIComponent( M('[data-point="'+i+'"]').val() );
-			charactor.push(chara);
 		}
-		if (startFic === '') {
-			alert('도입부를 적어주세요.');
-			M('#startFic').focus()
+		if (desc == '') {
+			alert('게임을 설명해주세요.');
+			M('#desc').focus()
 			return false;
 		}
 		
-		M('#btnReg').off('click');
-		bodyData = {
-			'title': encodeURIComponent(title),
-			'author': encodeURIComponent(author),
-			'kasid': encodeURIComponent(kasid),
-			'mode': encodeURIComponent(mode),
-			'genre': encodeURIComponent(genre),
-			'startFic': encodeURIComponent(startFic),
-			'charactor': charactor,
-			'ua': navigator.userAgent,
-			'url': window.location.href
-		}
-		$.ajax({
-			 'url' : apiurl + code + '_add.php'
-			,'contentType': 'application/x-www-form-urlencoded'
-			,'data': bodyData
-			,'type': 'POST'
-			,'success': function(result){
-				var  result = M.json(result)
-					,idx = result['result']
-					
-				// 썸네일 만들기
-				bodyData = {
-					'title': title,
-					'idx': result.result
+		M('#form1').attr('action', '../api/game_add.php');
+		document.form1.submit();
+		/*
+		$.ajaxFileUpload({ 
+			url : apiurl + code + '_add.php',
+			type: "POST",
+			secureuri : false, 
+			fileElementId : 'photo', 
+			dataType : 'json', 
+			data : {
+				'title': encodeURIComponent(title),
+				'game_url': encodeURIComponent(game_url),
+				'photo': encodeURIComponent(photo),
+				'genre': encodeURIComponent(genre),
+				'desc': encodeURIComponent(desc),
+				'url': window.location.href,
+				'ua': navigator.userAgent
+			},
+			complete:function(e){
+				if (!e.responseText || !M.json(e.responseText)) {
+					alert('오류가 있습니다.')
+					window.location.href = 'http://gaeyou.com/s2/';
 				}
-				$.ajax({
-					 'url': apiurl + code + '_make_thum.php'
-					,'contentType': 'application/x-www-form-urlencoded'
-					,'data': bodyData
-					,'type': 'POST'
-					,'success': function(){
-						M.storage(code+'_count', '0');
-						addComplete(code, result.result);
-						alert('등록되었습니다.');
-						window.location.href = 'http://gaeyou.com/novel/#' + result.result;
-					}
-				})
+				var result = M.json(e.responseText).result;
+					flist = M.storage(code) || []
+				
+				if (typeof flist === 'string') {
+					flist = M.json(flist)
+				}
+				flist.push(result);
+				M.storage(code, M.json(flist));
+				//alert('등록되었습니다.');
+				window.location.href = './list.html';
 			}
 		})
+		*/
 	})
 	
 	M('#btnCancel').on('click', function(){

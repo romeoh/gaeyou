@@ -19,8 +19,9 @@ function initNavi() {
 		str += '<ul class="nav">';
 		str += '	<li data-page="test"><a href="../t/">깨알테스트</a></li>';
 		str += '	<li data-page="sa"><a href="../s/">동영상</a></li>';
-		str += '	<li data-page="worldcup"><a href="../w/">슈퍼랭킹</a></li>';
-		str += '	<li data-page="novel"><a href="../novel/list.html">썰픽 <i class="fa fa-star fa-yellow"></i></a></li>';
+		//str += '	<li data-page="worldcup"><a href="../w/">슈퍼랭킹</a></li>';
+		str += '	<li data-page="game"><a href="../game/list.html">웹게임 <i class="fa fa-star fa-yellow"></i></a></li>';
+		str += '	<li data-page="novel"><a href="../novel/list.html">썰픽</li>';
 		//str += '	<li data-page="friend"><a href="../f/">친구만들기</a></li>';
 		//str += '	<li data-page="tab"><a href="../tab/">탭탭탭!!!<span class="new"></span></a></li>';
 		str += '</ul>';
@@ -308,12 +309,15 @@ function initMenu() {
 		str += '		<dd><a href="/s"><span class="ico arrow"></span>웃긴 동영상</a></dd>';
 		str += '		<dd><a href="/s2"><span class="ico arrow"></span>움직이는 짤방 <i class="fa fa-thumbs-up fa-red"></i></a></dd>';
 		
+		str += '		<dt>설치가 필요없는: 웹게임</dt>';
+		str += '		<dd><a href="/game/list.html"><span class="ico arrow"></span>웹게임 <i class="fa fa-star fa-red"></i></a></dd>';
+		
+		str += '		<dt>함께쓰는 소설: 썰픽</dt>';
+		str += '		<dd><a href="/novel/list.html"><span class="ico arrow"></span>썰픽 </dd>';
+		
 		str += '		<dt>슈퍼랭킹</dt>';
 		str += '		<dd><a href="/w"><span class="ico arrow"></span>슈퍼랭킹</a></dd>';
 		str += '		<dd><a href="/r"><span class="ico arrow"></span>깨알랭킹</a></dd>';
-		
-		str += '		<dt>함께쓰는 소설: 썰픽</dt>';
-		str += '		<dd><a href="/novel/list.html"><span class="ico arrow"></span>썰픽 <i class="fa fa-star fa-red"></i></a></dd>';
 		
 		//str += '		<dt>탭탭탭!!!</dt>';
 		//str += '		<dd><a href="/tab"><span class="ico arrow"></span>탭탭탭!!!<span class="ico new"></span></a></dd>';

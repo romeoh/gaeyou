@@ -1,7 +1,9 @@
-var  code = 'novel'
+var  code = 'game'
 	,hash
 	,cuData = {}
-	,novelComp = M.storage('novel_comp') || '{}'
+	
+	,replyStart = 0
+	,replyTotal = 15
 
 window.addEventListener('DOMContentLoaded', ready, false);
 window.addEventListener('hashchange', function() {
@@ -10,11 +12,6 @@ window.addEventListener('hashchange', function() {
 }, false);
 
 function ready() {
-	M('#play').on('click', function(){
-		window.location.href = 'http://m.gamesgames.com/html5games/en_US/Snail+bob/'
-	})
-	return;
-	
 	/*if (!admin) {
 		alert('서비스 점검중입니다.');
 		window.location.href = '/t/';
@@ -22,17 +19,6 @@ function ready() {
 	}*/
 	
 	hash = getHash();
-	novelComp = M.json(novelComp);
-	
-	M('#btnDetail').on('click', function(evt, mp){
-		if (M('#storyBox').hasClass('close')) {
-			M('#storyBox').removeClass('close');
-			M('#btnDetail').html('<i class="fa fa-chevron-circle-up"></i> 닫기')
-		} else {
-			M('#storyBox').addClass('close')
-			M('#btnDetail').html('<i class="fa fa-chevron-circle-down"></i> 더보기')
-		}
-	})
 	
 	M('#btnGaeup').on('click', function(){
 		setGaeup('up')
@@ -41,102 +27,86 @@ function ready() {
 		setGaeup('down')
 	})
 	
+	if (admin) {
+		M('#btnNew').html('<a class="gnbNew" href="add.html"></a>');
+	}
+	
 	// 썰 전문통신
 	databody = {
 		'idx': hash
 	}
-	request(code+'_get', databody, function(result){
+	
+	request(code+'_get_list', databody, function(result){
 		var  result = M.json(result)
 			,str = ''
-			,novelStr = ''
-		
-		cuData['idx'] = hash = result.idx;
-		cuData['author'] = decodeURIComponent(result.author);
-		cuData['kasid'] = decodeURIComponent(result.kasid);
-		cuData['title'] = decodeURIComponent(result.title);
-		cuData['mode'] = decodeURIComponent(result.mode);
-		cuData['genre'] = decodeURIComponent(result.genre);
-		cuData['first_fic'] = decodeURIComponent(result.first_fic);
-		cuData['reply'] = result.reply;
-		cuData['good'] = result.good;
-		cuData['bad'] = result.bad;
-		cuData['fic_count'] = result.fic_count;
-		cuData['view'] = result.view;
-		cuData['regDate'] = result.regDate;
-		cuData['charactor'] = [];
-		
-		for (var i=0; i<result.charactor.length; i++) {
-			var  chara = {}
-				,n = i+1
-				
-			chara['name'] = decodeURIComponent( result.charactor[i]['name'] );
-			chara['age'] = decodeURIComponent( result.charactor[i]['age'] );
-			chara['sex'] = decodeURIComponent( result.charactor[i]['sex'] );
-			chara['job'] = decodeURIComponent( result.charactor[i]['job'] );
-			chara['point'] = decodeURIComponent( result.charactor[i]['point'] );
-			cuData['charactor'].push(chara);
 			
-			str += '<dt><i class="fa fa-male"></i> 등장인물' + n + '</dt>';
-			str += '<dd><span>이름:</span> ' + cuData['charactor'][i]['name'] + '</dd>';
-			if (cuData['charactor'][i]['age']) {
-				str += '<dd><span>나이:</span> ' + cuData['charactor'][i]['age'] + '</dd>';
-			}
-			if (cuData['charactor'][i]['sex']) {
-				str += '<dd><span>성별:</span> ' + cuData['charactor'][i]['sex'] + '</dd>';
-			}
-			if (cuData['charactor'][i]['job']) {
-				str += '<dd><span>직업:</span> ' + cuData['charactor'][i]['job'] + '</dd>';
-			}
-			if (cuData['charactor'][i]['point']) {
-				str += '<dd><span>특징:</span> ' + cuData['charactor'][i]['point'] + '</dd>';
-			}
+		if (result.length == 0) {
+			window.location.href = './list.html'
 		}
-		if (cuData['mode'] == 'public') {
-			M('#writeBook').css('display', 'block')
-			M('#mode').html('<i class="fa fa-check"></i> 모드: 모두쓰기');
-		} else {
-			if (getPrivate(cuData['idx'])) {
-				M('#writeBook').css('display', 'block');
-				M('#writeTitle').html('<i class="fa fa-lock"></i> 썰픽션을 전개 해보세요.')
-			}
-			M('#mode').html('<i class="fa fa-check"></i> 모드: 혼자쓰기');
-		}
+		cuData['idx'] = hash = result[0].idx;
+		cuData['title'] = decodeURIComponent(result[0].title);
+		cuData['game_url'] = decodeURIComponent(result[0].game_url);
+		cuData['thum'] = decodeURIComponent(result[0].thum);
+		cuData['thum_large'] = decodeURIComponent(result[0].thum_large);
+		cuData['genre'] = decodeURIComponent(result[0].genre);
+		cuData['mode'] = decodeURIComponent(result[0].mode);
+		cuData['text'] = decodeURIComponent(result[0].text).replace(/\+/g, ' ').replace('\n', '<br>');
+		cuData['reply'] = result[0].reply;
+		cuData['good'] = result[0].good;
+		cuData['bad'] = result[0].bad;
+		cuData['view'] = result[0].view;
+		cuData['regDate'] = result[0].regDate;
+		cuData['replyList'] = [];
 		
-		M('#fictitle').html('<a href="./list.html">' + cuData['title'] + '</a>');
-		M('#title').html('<i class="fa fa-check"></i> 제목: ' + cuData['title']);
-		M('#genre').html('<i class="fa fa-check"></i> 장르: ' + cuData['genre']);
-		M('#author').html('<i class="fa fa-check"></i> 개설: ' + cuData['author']);
-		M('#replyTitle').html('<i class="fa fa-smile-o"></i> ' + cuData['reply'] + '개의 댓글이 있습니다. ');
-		M('#charactor').html(str);
-		M('#btnGoReply').attr('href', './reply.html#'+cuData['idx']);
+		M('#thum').html('<img src="../upload/game/large/' + cuData['thum_large'] + '">');
+		M('#title').html( cuData['title'] );
+		M('#desc').html( cuData['text'] );
+		M('#title').html( cuData['title'] );
+		M('#title').html( cuData['title'] );
 		M('#btnGaeup').html('<i class="fa fa-thumbs-up"></i> 깨업 (' + cuData['good'] + ')')
 		M('#btnGaedown').html('<i class="fa fa-thumbs-down"></i> 깨따 (' + cuData['bad'] + ')')
+		M('#replyTitle').html('<i class="fa fa-smile-o"></i> ' + cuData['reply'] + '개의 댓글이 있습니다. ');
 		
-		novelStr += '<div class="para">';
-		novelStr += '	<div class="author">도입부</div>';
-		novelStr += '	<p>' + cuData['first_fic'].replace(/\n/g, '<br>') + '</p>';
-		novelStr += '</div>';
-		novelStr += '<div class="data" id="novel">';
-		novelStr += '</div>';
-
-		M('#novelBook').html(novelStr);
+		M('#gametitle')
+			.html(cuData['title'])
+			.on('click', function(){
+				window.location.href = './list.html'
+			})
 		
-		// 썰픽 가져오기
-		getFiction();
+		M('#play').on('click', function() {
+			var  winWidth = window.innerWidth
+				,winHeight = window.innerHeight
+			
+			if (!getAd()) {
+				alert('이 게임을 한번 공유해 주셔야 플레이 할 수 있습니다.');
+				M('#adinfo').css('display', 'block')
+				M.scroll( M.scroll().y + 300 );
+				return false;
+			}
+			
+			if (cuData['mode'] == 'LAND' && winWidth < winHeight) {
+				alert('스마트폰을 가로로 돌린 후 다시 시작하세요.')
+				return false;
+			}
+			if (cuData['mode'] == 'PORT' && winWidth > winHeight) {
+				alert('스마트폰을 세로로 돌린 후 다시 시작하세요.')
+				return false;
+			}
+			window.location.href = cuData['game_url'];
+		})
 		initView();
+		initWriteReply()
+		getReply()
 	})
-	
-	// 썰픽쓰기
-	initWriteFiction();
 }
 
 // 깨업
 function setGaeup(flag) {
-	if ( checkUniq('novel_gaeup_list', cuData['idx']) ) {
-		if (!admin) {
+	if ( checkUniq(code + '_gaeup_list', cuData['idx']) ) {
+		//if (!admin) {
 			alert('이미 평가 하셨습니다.');
 			return false;
-		}
+		//}
 	}
 
 	// 깨업
@@ -147,7 +117,7 @@ function setGaeup(flag) {
 	request(code+'_gaeup', databody, function(result){
 		var  result = M.json(result)
 				
-		setUniq('novel_gaeup_list', cuData['idx']);
+		setUniq(code + '_gaeup_list', cuData['idx']);
 		if (result['flag'] == 'up') {
 			M('#btnGaeup').html('<i class="fa fa-thumbs-up"></i> 깨업 (' + result['total'] + ')')
 		} else if (result['flag'] == 'down') {
@@ -157,70 +127,11 @@ function setGaeup(flag) {
 	})
 }
 
-// 썰픽 가져오기 전문
-function getFiction() {
-	// 썰 전문통신
-	databody = {
-		'idx': hash
-	}
-	request(code+'_fictions_get', databody, function(result){
-		var  result = M.json(result)
-			,str = ''
-			,fiction = cuData['first_fic'] + '\n\n'
-		
-		for (var i=0; i<result.length; i++) {
-			str += '<div class="para">';
-			str += '	<div class="author">';
-			str += '		<span>' + decodeURIComponent(result[i]['author']) + '</span> 님의 썰 ';
-			if (getComp(result[i]['idx'])) {
-				str += '	<i class="fa fa-trash-o" data-del="' + result[i]['idx'] + '"></i>';
-			}
-			str += '	</div>';
-			str += '	<p>' + decodeURIComponent(result[i]['text']).replace(/\n/g, '<br>') + '</p>';
-			str += '</div>';
-			fiction += decodeURIComponent(result[i]['text']) + '\n\n';
-		}
-		cuData['fiction'] = fiction
-		M('#novel').html(str);
-		M('[data-del]').on('click', function(evt, mp){
-			if(!confirm('테스트를 정말 삭제하시겠습니까?')) {
-				return false;
-			}
-			var idx = mp.data('del')
-			bodyData = {
-				'idx': idx,
-				'novelIdx': cuData['idx'],
-				'ua': navigator.userAgent,
-				'url': window.location.href
-			}
-			$.ajax({
-				 'url': apiurl + code + '_del.php'
-				,'contentType': 'application/x-www-form-urlencoded'
-				,'data': bodyData
-				,'type': 'POST'
-				,'success': function(result){
-					var  result = M.json(result)
-						,popList = []
-						,comps = novelComp[cuData['idx']]
-						
-					for (i in comps) {
-						if (result['id'] != comps[i]) {
-							popList.push(comps[i]);
-						}
-					}
-					novelComp[cuData['idx']] = popList;
-					M.storage('novel_comp', M.json(novelComp));
-					window.location.reload();
-				}
-			})
-		})
-	})
-}
-
 // 조회수 올리기
 function initView() {
 	// 조회수 업데이트
-	if ( !checkUniq(code + '_view', cuData['idx']) || admin) {
+	if ( !checkUniq(code + '_view', cuData['idx']) ) {
+	//if ( !checkUniq(code + '_view', cuData['idx']) || admin) {
 		bodyData = {
 			'idx': cuData['idx'],
 			'code': code,
@@ -243,16 +154,94 @@ function initView() {
 }
 
 
-// 썰픽쓰기 전문
-function initWriteFiction() {
-	M('#fcontent').on('focus', function(evt, mp){
-		if (!getAd()) {
-			alert('이 썰을 한번 홍보해주셔야 썰픽을 쓸수 있습니다.');
-			M('#fcontent').blur();
-			M('#adinfo').css('display', 'block');
-			M.scroll( M.scroll().y + 320 )
-			return false;
+// 댓글 가져오기
+function getReply() {
+	databody = {
+		'idx': cuData['idx'],
+		'total': replyTotal,
+		'start': replyStart
+	}
+
+	request(code+'_reply_get', databody, function(result){
+		var  result = M.json(result)
+			,str = ''
+		
+		replyStart = replyTotal + replyStart;
+		
+		// 댓글가져오기
+		if (result.length == 0) {
+			str += '<li>';
+			str += '	<p class="no_reply"><i class="fa fa-pencil"></i> 제일 먼저 댓글을 작성해 보세요.</p>';
+			str += '</li>';
+		} else {
+			for (var i=0; i<result.length; i++) {
+				var  replys = {}
+					,deleteAble = checkUniq(code + '_list', result[i]['idx'])
+					//,n = i+1
+
+				replys['uname'] = decodeURIComponent( result[i]['uname'] );
+				replys['kasid'] = decodeURIComponent( result[i]['kasid'] );
+				replys['text'] = decodeURIComponent( result[i]['text'] );
+				replys['idx'] = decodeURIComponent( result[i]['idx'] );
+				replys['regDate'] = result[i]['regDate'];
+				cuData['replyList'].push(replys);
+				str += '<li>';
+				str += '	<div class="reply_info">';
+				str += '		<span>' + replys['uname'] + '</span>';
+				str += '		<span> | ' + M.dynamicDate(replys['regDate']) + '</span>';
+				if (deleteAble) {
+					str += '		<span> | <i class="fa fa-trash-o" data-del="' + replys['idx'] + '"></i></span>';
+				}
+				str += '	</div>';
+				str += '	<p>' + replys['text'] + '</p>';
+				str += '</li>';
+				
+			}	
 		}
+		
+		M('#reply_con').html(str);
+		M('#replyTitle').html('<i class="fa fa-smile-o"></i> 댓글 <span>(' + cuData['reply'] + '개)</span>')
+		
+		// 삭제하기
+		if (deleteAble) {
+			M('[data-del]').on('click', function(evt, mp){
+				if(!confirm('정말 삭제하시겠습니까?')) {
+					return false;
+				}
+				id = mp.data('del');
+				
+				bodyData = {
+					'idx': id,
+					'gameIdx': cuData['idx'],
+					'ua': navigator.userAgent
+				}
+				$.ajax({
+					 'url': apiurl + code + '_reply_del.php'
+					,'contentType': 'application/x-www-form-urlencoded'
+					,'data': bodyData
+					,'type': 'POST'
+					,'success': function(result){
+						var result = M.json(result)
+							test = M.json(M.storage(code + '_list'))
+							popList = []
+							
+						for (var i=0; i<test.length; i++) {
+							if (result['id'] != test[i]) {
+								popList.push(test[i]);
+							}
+						}
+						M.storage(code + '_list', M.json(popList));
+						window.location.reload();
+					}
+				})
+			})
+		}	
+	})
+}
+
+// 댓글쓰기 전문
+function initWriteReply() {
+	M('#fcontent').on('focus', function(evt, mp){
 		if (mp.hasClass('place')) {
 			mp.removeClass('place');
 			mp.val('');
@@ -261,49 +250,42 @@ function initWriteFiction() {
 	M('#fcontent').on('blur', function(evt, mp){
 		if (mp.val() == '') {
 			mp.addClass('place');
-			mp.val('심각한 욕설, 너무 선정적인 내용은 자제 부탁드려요.');
+			mp.val('심각한 욕설, 선정적인 표현은 삭제될 수 있습니다.');
 		}
 	})
 	M('#fcontent').on('keyup', function(evt, mp){
 		M('#ficleng').html(mp.val().length+'/1000')
 	})
 	M('#btnReg').on('click', function(evt, mp){
-		if (!getAd()) {
-			alert('이 썰을 한번 홍보해주셔야 썰픽을 쓸수 있습니다.');
-			M('#fcontent').blur();
-			M('#adinfo').css('display', 'block')
-			return false;
-		}
 		if (M('#fauthor').val() == '') {
-			alert('필명을 입려하세요.');
+			alert('닉네임을 입려하세요.');
 			M('#fauthor').focus();
 			return false;
 		}
 		if (M('#fcontent').hasClass('place')) {
-			alert('썰픽을 적어주세요.');
+			alert('댓글을 입력해 주세요.');
 			M('#fcontent').focus();
 			return false;
 		}
 		databody = {
 			'idx': cuData['idx'],
-			'author': encodeURIComponent(M('#fauthor').val()),
+			'uname': encodeURIComponent(M('#fauthor').val()),
 			'kasid': '',
-			'content': encodeURIComponent(M('#fcontent').val()),
+			'text': encodeURIComponent(M('#fcontent').val()),
 			'ua': navigator.userAgent,
 			'url': window.location.href
 		}
-		request(code+'_fiction_add', databody, function(result){
+		request(code+'_reply_add', databody, function(result){
+			console.log(result)
 			var  result = M.json(result)
-				,fic_count = M.storage(code+'_count') || 0
-			fic_count = Number(fic_count) + Number(1);
-			M.storage(code+'_count', fic_count);
+				,key = code + '_list'
 			
-			if (setComp(result['result']) ) {
-				window.location.reload();
-			}
+			setUniq(key, result['id']);
+			window.location.reload();
 		})
 	})
 }
+
 
 function action(_data) {
 	var  data = _data || {}
@@ -316,23 +298,23 @@ function action(_data) {
 	}
 	
 	data.title = cuData['title'];
-	data.app = '썰픽: 함께 쓰는 소셜픽션';
-	data.url = 'http://gaeyou.com/novel/#'+cuData['idx'];
+	data.app = '설치하지 않고 즐기는: 웹게임';
+	data.url = 'http://gaeyou.com/game/#'+cuData['idx'];
 
 	if (media == 'talk') {
 		shareData(data);
 		return false;
 	}
 	
-	post += '🎩 썰픽: 함께 쓰는 소셜픽션\n';
+	post += '🐼 설치할 필요없는 웹게임\n';
 	post += '────────────────────\n'
 	post += '[' + data.title + ']\n\n';
-	post += cuData['fiction']+'';
+	post += cuData['text'].replace(/\<br\>/g, '\n')+'';
 	data.post = post;
 	
-	data.desc = '모두가 함께 쓰는 썰픽\n함께 써봐요~';
-	data.app = '썰픽: 함께 쓰는 소셜픽션';
-	data.img = 'http://gaeyou.com/upload/novel/'+cuData['idx']+'.png';
+	data.desc = '깨알유머 웹게임';
+	data.app = '설치하지 않고 웹게임을 즐기세요.';
+	data.img = 'http://gaeyou.com/upload/game/thum/'+cuData['thum'];
 
 	shareData(data);
 }
@@ -346,8 +328,7 @@ function getAd() {
 			return true;
 		}
 	}
-	return true;
-	//return false;
+	return false;
 }
 
 // 전문통신
@@ -377,34 +358,6 @@ function request(tr, data, callback) {
 	}
 }
 
-function getComp(idx) {
-	compList = novelComp[cuData['idx']];
-	for (i in compList) {
-		if (compList[i] == idx) {
-			return true;
-		}
-	}
-	return false;
-}
-
-function getPrivate(idx) {
-	var private = M.storage(code) || [];
-	private = M.json(private);
-	for (i in private) {
-		if (private[i] == idx) {
-			return true;
-		}
-	}
-	return false;
-}
-
-function setComp(idx) {
-	var complist = novelComp[cuData['idx']] || []
-	complist.push(idx);
-	novelComp[cuData['idx']] = complist;
-	M.storage('novel_comp', M.json(novelComp));
-	return true;
-}
 
 
 
