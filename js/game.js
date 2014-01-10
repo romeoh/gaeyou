@@ -3,7 +3,7 @@ var  code = 'game'
 	,cuData = {}
 	
 	,replyStart = 0
-	,replyTotal = 15
+	,replyTotal = 20
 
 window.addEventListener('DOMContentLoaded', ready, false);
 window.addEventListener('hashchange', function() {
@@ -58,7 +58,7 @@ function ready() {
 		cuData['regDate'] = result[0].regDate;
 		cuData['replyList'] = [];
 		
-		M('#thum').html('<img src="../upload/game/large/' + cuData['thum_large'] + '">');
+		M('#thum').html('<img src="http://romeoh.github.io/gaeyou/upload/game/large/' + cuData['thum_large'] + '">');
 		M('#title').html( cuData['title'] );
 		M('#desc').html( cuData['text'] );
 		M('#title').html( cuData['title'] );
