@@ -75,7 +75,7 @@ function getNewList() {
 			str += '				<img src="../upload/game/thum/' + result[i]['thum'] + '">';
 			str += '			</div>';
 			str += '			<div class="item_detail">';
-			str += '				<h3>' + decodeURIComponent( result[i]['title'] ) + '</h3>';
+			str += '				<h3>' + decodeURIComponent( result[i]['title'] ).replace(/\+/g, ' ') + '</h3>';
 			str += '				<p>' + decodeURIComponent( result[i]['text'] ).replace(/\+/g, ' ') + '</p>';
 			str += '				<div class="item_info">';
 			str += '					<i class="fa fa-eye gray"></i><span class="num">' + result[i]['view'] + '</span>';
