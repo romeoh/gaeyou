@@ -78,7 +78,7 @@ function ready() {
 				,winHeight = window.innerHeight
 			
 			if (!getAd()) {
-				alert('공유 좀 부탁 드릴께요~');
+				alert('이 게임을 한번 공유해 주셔야 플레이 할 수 있습니다.');
 				M('#adinfo').css('display', 'block')
 				M.scroll( M.scroll().y + 300 );
 				return false;
