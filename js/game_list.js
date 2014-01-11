@@ -79,7 +79,7 @@ function getNewList() {
 			str += '				<p>' + decodeURIComponent( result[i]['text'] ).replace(/\+/g, ' ') + '</p>';
 			str += '				<div class="item_info">';
 			str += '					<i class="fa fa-eye gray"></i><span class="num">' + result[i]['view'] + '</span>';
-			str += '					<i class="fa fa-comments gray"></i><span class="num">' + result[i]['reply'] + '</span>';
+			//str += '					<i class="fa fa-comments gray"></i><span class="num">' + result[i]['reply'] + '</span>';
 			str += '					<i class="fa fa-thumbs-up gray"></i><span class="num">' + result[i]['good'] + '</span>';
 			str += '				</div>';
 			str += '			</div>';
