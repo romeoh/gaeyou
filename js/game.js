@@ -44,7 +44,7 @@ function ready() {
 			window.location.href = './list.html'
 		}
 		cuData['idx'] = hash = result[0].idx;
-		cuData['title'] = decodeURIComponent(result[0].title);
+		cuData['title'] = decodeURIComponent(result[0].title).replace(/\+/g, ' ').replace('\n', '<br>');
 		cuData['game_url'] = decodeURIComponent(result[0].game_url);
 		cuData['thum'] = decodeURIComponent(result[0].thum);
 		cuData['thum_large'] = decodeURIComponent(result[0].thum_large);
