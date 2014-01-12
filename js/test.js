@@ -375,7 +375,7 @@ function initGaeup() {
 // 조회수 올리기
 function initView() {
 	// 조회수 업데이트
-	if ( !checkUniq('testViewList', cuData['idx']) ) {
+	//if ( !checkUniq('testViewList', cuData['idx']) ) {
 		bodyData = {
 			'idx': cuData['idx'],
 			'code': code,
@@ -394,7 +394,7 @@ function initView() {
 				M('#viewCount').html(result['total']);
 			}
 		})
-	}
+	//}
 }
 
 

@@ -59,6 +59,7 @@ function ready() {
 		cuData['replyList'] = [];
 		
 		M('#thum').html('<img src="http://romeoh.github.io/gaeyou/upload/game/large/' + cuData['thum_large'] + '">');
+		//M('#thum').html('<img src="../upload/game/large/' + cuData['thum_large'] + '">');
 		M('#title').html( cuData['title'] );
 		M('#desc').html( cuData['text'] );
 		M('#title').html( cuData['title'] );

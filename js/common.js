@@ -72,14 +72,14 @@ function setView(code, hash, cb) {
 	if (getDataType(view) == 'string') {
 		view = M.json(view);
 	}
-	if (!checkUniq(key, hash)) {
+	//if (!checkUniq(key, hash)) {
 		bodyData = {
 			'idx': hash,
 			'code': code,
 			'url': window.location.href,
 			'ua': navigator.userAgent
 		}
-		console.log(bodyData)
+		//console.log(bodyData)
 		$.ajax({
 			 'url': api
 			,'contentType': 'application/x-www-form-urlencoded'
@@ -92,7 +92,7 @@ function setView(code, hash, cb) {
 				cb(result);
 			}
 		})
-	}
+	//}
 }
 
 
