@@ -1,7 +1,7 @@
 var  code = 'game'
 	
 	// 신규리스트 가져오기
-	,newTotal = 5
+	,newTotal = 20
 	,newStart = 0
 	
 	// 인기리스트 가져오기
