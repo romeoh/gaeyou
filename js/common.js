@@ -313,7 +313,7 @@ function initMenu() {
 		str += '		<dd><a href="/game/list.html"><span class="ico arrow"></span>웹게임 <i class="fa fa-star fa-red"></i></a></dd>';
 		
 		str += '		<dt>함께쓰는 소설: 썰픽</dt>';
-		str += '		<dd><a href="/novel/list.html"><span class="ico arrow"></span>썰픽 </dd>';
+		str += '		<dd><a href="/novel/list.html"><span class="ico arrow"></span>썰픽</a></dd>';
 		
 		str += '		<dt>슈퍼랭킹</dt>';
 		str += '		<dd><a href="/w"><span class="ico arrow"></span>슈퍼랭킹</a></dd>';
