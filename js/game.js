@@ -26,6 +26,29 @@ function ready() {
 	M('#btnGaedown').on('click', function(){
 		setGaeup('down')
 	})
+	M('#btnList').on('click', function(){
+		window.location.href = './list.html'
+	})
+	M('#btnInfo').on('click', function(){
+		if (M('#infoDesc').hasClass('show')) {
+			M('#infoDesc').removeClass('show')
+		} else {
+			M('#infoDesc').addClass('show')
+		}
+	})
+	M('[data-chrome]').on('click', function(){
+		var os = M.browser().os
+		if (os == 'android') {
+			window.location.href = 'https://play.google.com/store/apps/details?id=com.android.chrome&hl=ko';
+		} else if (os == 'ios') {
+			window.location.href = 'https://itunes.apple.com/kr/app/chrome/id535886823?mt=8';
+		} else {
+			window.location.href = 'http://www.google.co.kr/intl/ko/chrome/';
+		}
+	})
+	M('[data-gaeyou]').on('click', function(){
+		window.location.href = 'http://gaeyou.com/u/#@gaeyou';
+	})
 	
 	if (admin) {
 		M('#btnNew').html('<a class="gnbNew" href="add.html"></a>');

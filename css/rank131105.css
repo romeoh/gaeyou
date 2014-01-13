@@ -269,10 +269,15 @@ select {float: none;width: 70%;height: 31px;margin-left: 6px;margin-bottom: 15px
 .game_box .thum {height:135px; text-align:center; padding-bottom:10px}
 .game_box .thum img {height:100%; border-radius:10px}
 .game_box .btn_start {text-align:center; padding:10px}
-
 .game_launcher {width:480px !important; height:320px !important; border:none}
 
-
+.game-info {padding:0 0 10px; padding:10px; background:#eee; margin:10px; border-radius:10px}
+.game-info .title {text-align:center; color:#FF47F0; cursor:pointer; text-decoration:underline; margin:0px}
+.game-info .info {display:none}
+.game-info .info.show {display:block}
+.game-info p {margin:8px; text-align:left; font-size:16px}
+.game-info p.btns {text-align:center}
+.game-info p strong {color:#BC07DF}
 
 .clipboard {position:absolute; top:37px; left:16px; z-index:999; background:#000; color:#fff; padding:5px}
 .clipboard .arrow {border-top:transparent; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 5px solid #2d2d2d; bottom: 29px;left: 65px;outline: none;margin: 0 0 0 -5px;position: absolute;}

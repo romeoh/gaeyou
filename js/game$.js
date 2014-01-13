@@ -26,6 +26,29 @@ function ready() {
 	M('#btnGaedown').on('click', function(){
 		setGaeup('down')
 	})
+	M('#btnList').on('click', function(){
+		window.location.href = './list.html'
+	})
+	M('#btnInfo').on('click', function(){
+		if (M('#infoDesc').hasClass('show')) {
+			M('#infoDesc').removeClass('show')
+		} else {
+			M('#infoDesc').addClass('show')
+		}
+	})
+	M('[data-chrome]').on('click', function(){
+		var os = M.browser().os
+		if (os == 'android') {
+			window.location.href = 'https://play.google.com/store/apps/details?id=com.android.chrome&hl=ko';
+		} else if (os == 'ios') {
+			window.location.href = 'https://itunes.apple.com/kr/app/chrome/id535886823?mt=8';
+		} else {
+			window.location.href = 'http://www.google.co.kr/intl/ko/chrome/';
+		}
+	})
+	M('[data-gaeyou]').on('click', function(){
+		window.location.href = 'http://gaeyou.com/u/#@gaeyou';
+	})
 	
 	if (admin) {
 		M('#btnNew').html('<a class="gnbNew" href="add.html"></a>');
@@ -59,6 +82,7 @@ function ready() {
 		cuData['replyList'] = [];
 		
 		M('#thum').html('<img src="http://romeoh.github.io/gaeyou/upload/game/large/' + cuData['thum_large'] + '">');
+		//M('#thum').html('<img src="../upload/game/large/' + cuData['thum_large'] + '">');
 		M('#title').html( cuData['title'] );
 		M('#desc').html( cuData['text'] );
 		M('#title').html( cuData['title'] );
@@ -78,7 +102,7 @@ function ready() {
 				,winHeight = window.innerHeight
 			
 			if (!getAd()) {
-				alert('이 게임을 한번 공유해 주셔야 플레이 할 수 있습니다.');
+				alert('공유 좀 부탁 드릴께요~');
 				M('#adinfo').css('display', 'block')
 				M.scroll( M.scroll().y + 300 );
 				return false;
