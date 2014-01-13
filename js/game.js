@@ -119,8 +119,8 @@ function ready() {
 			window.location.href = cuData['game_url'];
 		})
 		initView();
-		//initWriteReply()
-		//getReply()
+		initWriteReply()
+		getReply()
 	})
 }
 
@@ -171,7 +171,7 @@ function initView() {
 				var  result = M.json(result)
 				
 				setUniq(code + '_view', cuData['idx']);
-				//M('#viewCount').html(result['total']);
+				M('#viewCount').html(result['total']);
 			}
 		})
 	//}
@@ -228,18 +228,18 @@ function getReply() {
 			}
 		}
 		
-		//M('#reply_con').html( str + M('#reply_con').html() );
-		//M('#replyTitle').html('<i class="fa fa-smile-o"></i> 댓글 <span>(' + cuData['reply'] + '개)</span>')
+		M('#reply_con').html( str + M('#reply_con').html() );
+		M('#replyTitle').html('<i class="fa fa-smile-o"></i> 댓글 <span>(' + cuData['reply'] + '개)</span>')
 		
 		// 댓글 더보기
-		/*M('[data-replymore]').on('click', function(evt, mp){
+		M('[data-replymore]').on('click', function(evt, mp){
 			mp.remove();
 			getReply();
-		})*/
+		})
 		
 		
 		// 삭제하기
-		/*if (deleteAble) {
+		if (deleteAble) {
 			M('[data-del]').on('click', function(evt, mp){
 				if(!confirm('정말 삭제하시겠습니까?')) {
 					return false;
@@ -271,7 +271,7 @@ function getReply() {
 					}
 				})
 			})
-		}*/
+		}
 	})
 }
 
