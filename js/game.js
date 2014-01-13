@@ -101,12 +101,12 @@ function ready() {
 			var  winWidth = window.innerWidth
 				,winHeight = window.innerHeight
 			
-			if (!getAd()) {
+			/*if (!getAd()) {
 				alert('아래 SNS에 공유후 게임을 실행할 수 있습니다.');
 				M('#adinfo').css('display', 'block')
 				M.scroll( M.scroll().y + 300 );
 				return false;
-			}
+			}*/
 			
 			if (cuData['mode'] == 'LAND' && winWidth < winHeight) {
 				alert('스마트폰을 가로로 돌린 후 다시 시작하세요.')
