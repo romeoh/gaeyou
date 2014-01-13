@@ -59,7 +59,7 @@ function getNewList() {
 		'total': newTotal
 	}
 	request(code+'_get_list', databody, function(result){
-		console.log(result)
+		//console.log(result)
 		var  result = M.json(result)
 			,str = ''
 		
