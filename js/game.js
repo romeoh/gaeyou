@@ -102,7 +102,7 @@ function ready() {
 				,winHeight = window.innerHeight
 			
 			if (!getAd()) {
-				alert('공유 좀 부탁 드릴께요~');
+				alert('아래 SNS에 공유후 게임을 실행할수 있습니다.');
 				M('#adinfo').css('display', 'block')
 				M.scroll( M.scroll().y + 300 );
 				return false;
