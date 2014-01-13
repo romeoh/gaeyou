@@ -414,7 +414,7 @@ padding: 8px 14px 9px;}
 
 .writebox input {width:90%; padding:5px; border:1px solid #A0A0A0}
 .writebox textarea {width:100%;font-size: 14px;}
-.adinfo {text-align:center; color:#F53EC9}
+.adinfo {text-align:center; position:relative; margin:-10px 0 -4px}
 .add_notice {position:relative; background:#F0F0F0; padding:10px; margin-bottom:20px}
 .add_notice h3 {color:#13A3C7; font-size:16px}
 .add_notice p {padding-top:5px; margin-right:32px}
