@@ -405,6 +405,7 @@ padding: 8px 14px 9px;}
 .novel_reply .goReply {position:absolute; right:10px; top:10px}
 .reply_book {background:#f0f0f4; border-top:1px solid #605e6b; border-bottom:1px solid #605e6b; padding:10px 15px 22px 15px; position:relative}
 .reply_book h2 {font-size:15px; text-align:left; color:#2d3038; padding:3px 0}
+.reply_book .unrun {position:absolute; right:7px; top:7px}
 .reply_book .regist {position:absolute; right:7px; bottom:5px}
 
 .novel_con {}

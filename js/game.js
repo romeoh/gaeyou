@@ -31,11 +31,16 @@ function ready() {
 	})
 	M('#btnInfo').on('click', function(){
 		if (M('#infoDesc').hasClass('show')) {
-			M('#infoDesc').removeClass('show')
+			M('#infoDesc').removeClass('show');
 		} else {
-			M('#infoDesc').addClass('show')
+			M('#infoDesc').addClass('show');
 		}
 	})
+	M('#unrun').on('click', function(){
+		M.scroll(341);
+		M('#infoDesc').addClass('show');
+	})
+	
 	M('[data-chrome]').on('click', function(){
 		var os = M.browser().os
 		if (os == 'android') {
