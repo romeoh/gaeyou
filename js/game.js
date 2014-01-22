@@ -20,6 +20,17 @@ function ready() {
 	
 	hash = getHash();
 	
+	/*
+	ua = navigator.userAgent;
+	if (ua.indexOf('NAVER') != '-1') {
+		setTimeout(function(){
+			alert('네이버앱에서는 일부게임이 실행되지 않을수 있습니다. \n게임이 실행되지 않으면 크롬 브라우저를 이용하세요.');
+			M.scroll(341);
+			M('#infoDesc').addClass('show');
+		}, 2000)
+	}
+	*/
+	
 	M('#btnGaeup').on('click', function(){
 		setGaeup('up')
 	})
@@ -86,8 +97,8 @@ function ready() {
 		cuData['regDate'] = result[0].regDate;
 		cuData['replyList'] = [];
 		
-		M('#thum').html('<img src="http://romeoh.github.io/gaeyou/upload/game/large/' + cuData['thum_large'] + '">');
-		//M('#thum').html('<img src="../upload/game/large/' + cuData['thum_large'] + '">');
+		//M('#thum').html('<img src="http://romeoh.github.io/gaeyou/upload/game/large/' + cuData['thum_large'] + '">');
+		M('#thum').html('<img src="../upload/game/large/' + cuData['thum_large'] + '">');
 		M('#title').html( cuData['title'] );
 		M('#desc').html( cuData['text'] );
 		M('#title').html( cuData['title'] );
@@ -106,15 +117,15 @@ function ready() {
 			var  winWidth = window.innerWidth
 				,winHeight = window.innerHeight
 			
-			if (!getAd()) {
+			/*if (!getAd()) {
 				alert('아래 SNS에 공유후 게임을 실행할 수 있습니다.');
 				M('#adinfo').css('display', 'block')
 				M.scroll( M.scroll().y + 300 );
 				return false;
-			}
+			}*/
 			
 			if (cuData['mode'] == 'LAND' && winWidth < winHeight) {
-				alert('스마트폰을 가로로 돌린 후 다시 시작하세요.')
+				alert('스마트폰에서 자동회전을 활성화하고\n폰을 가로로 돌린 후 다시 시작하세요.')
 				return false;
 			}
 			if (cuData['mode'] == 'PORT' && winWidth > winHeight) {
@@ -214,13 +225,14 @@ function getReply() {
 					,deleteAble = checkUniq(code + '_list', result[i]['idx'])
 					//,n = i+1
 
-				replys['uname'] = decodeURIComponent( result[i]['uname'] );
+				replys['idx'] = result[i]['idx'];
+				replys['uname'] = decodeText( result[i]['uname'], 2 );
 				replys['kasid'] = decodeURIComponent( result[i]['kasid'] );
-				replys['text'] = decodeURIComponent( result[i]['text'] );
+				replys['text'] = decodeText( result[i]['text'] );
 				replys['idx'] = decodeURIComponent( result[i]['idx'] );
 				replys['regDate'] = result[i]['regDate'];
 				cuData['replyList'].push(replys);
-				str += '<li>';
+				str += '<li data-idx="' + replys['idx'] + '">';
 				str += '	<div class="reply_info">';
 				str += '		<span>' + replys['uname'] + '</span>';
 				str += '		<span> | ' + M.dynamicDate(replys['regDate']) + '</span>';
@@ -291,7 +303,7 @@ function initWriteReply() {
 	M('#fcontent').on('blur', function(evt, mp){
 		if (mp.val() == '') {
 			mp.addClass('place');
-			mp.val('심각한 욕설, 선정적인 표현은 삭제될 수 있습니다.');
+			mp.val('게임 실행 안되는 분들은 공지사항을 읽으세요.');
 		}
 	})
 	M('#fcontent').on('keyup', function(evt, mp){

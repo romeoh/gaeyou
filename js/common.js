@@ -19,8 +19,9 @@ function initNavi() {
 		str += '<ul class="nav">';
 		str += '	<li data-page="test"><a href="../t/">깨알테스트</a></li>';
 		str += '	<li data-page="sa"><a href="../s/">동영상</a></li>';
+		str += '	<li data-page="rank"><a href="../r/">슈퍼랭킹</a></li>';
 		str += '	<li data-page="worldcup"><a href="../w/">슈퍼랭킹</a></li>';
-		str += '	<li data-page="game"><a href="../game/list.html">웹게임 <i class="fa fa-star fa-yellow"></i></a></li>';
+		//str += '	<li data-page="game"><a href="../game/list.html">웹게임 <i class="fa fa-star fa-yellow"></i></a></li>';
 		//str += '	<li data-page="novel"><a href="../novel/list.html">썰픽</li>';
 		//str += '	<li data-page="friend"><a href="../f/">친구만들기</a></li>';
 		//str += '	<li data-page="tab"><a href="../tab/">탭탭탭!!!<span class="new"></span></a></li>';
@@ -37,7 +38,7 @@ function initUserName() {
 		var uname = M.storage('uname') || '';
 		M('[data-uname]')
 			.val(uname)
-			.on('blur', function(){
+			.on('blur', function(evt, mp){
 				M.storage('uname', M('[data-uname]').val())
 			})
 	}
@@ -102,7 +103,22 @@ function addComplete(code, idx) {
 	setUniq(key, idx);
 }
 
+// flag == 2 : 이름
+function decodeText(txt, flag) {
+	var  val = decodeURIComponent(txt)
+		,filter = /쓰래기|쓰레기|스래기|스레기|찌레기|찌ㅡ레기|놈|시발놈|씨발놈|씨발|시발|시벌|시.발|시.벌|씨벌|시1발|시2발|씨1발|ㅅㅂ|ㅅ ㅂ|씨2발|지랄|빙시|병신|븅신|븅시|병 신|섹스|창녀|니미럴|자위중|병맛|새끼|새.끼|미친|ㅁㅊ|ㅂㅅ|야동|또라이|돌아이|욕|짜증|뒤저라|뒤져라|나가뒤져|나가 뒤져/g
+		
+	if (flag == '2') {
+		return val
+			.replace(/깨유|운영자|깨알유머|관리자|admin/g, val+'화이팅')
+			.replace(filter, '♡')
+			.replace(/romeoh/, '<i class="fa fa-plus-square"></i> 깨알유머')
+	}
+	return val
+			.replace(filter, '♡')
+			.replace(/존나|졸라|존니|존내/g, '매우')
 
+}
 
 // 댓글상자
 function initReplyBox() {
